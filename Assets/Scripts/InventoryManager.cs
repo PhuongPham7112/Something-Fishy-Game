@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
     public InventorySlot[] slots;
     public GameObject inventoryItemPrefab;
+    public bool isLocked = false;
 
     int selectedSlot = -1;
 

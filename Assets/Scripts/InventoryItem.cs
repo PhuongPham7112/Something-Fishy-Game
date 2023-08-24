@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private GameObject player;
     public Image img;
     private RectTransform rootRect;
     private RectTransform rect;
@@ -18,7 +17,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         InitializeItem(item);
         rect = GetComponent<RectTransform>();
         rootRect = transform.parent.parent.gameObject.GetComponent<RectTransform>();
-        player = PlayerSingleton.Instance.gameObject;
     }
     
 
@@ -37,7 +35,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        if (!InventoryManager.instance.isLocked)
+        {
+            transform.position = Input.mousePosition;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -45,7 +46,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // check if outside of Toolbar
         if (!AreRectsOverlapping(rect, rootRect))
         {
-            Debug.Log("Outside = drop object");
             Vector3 mouseScreenPosition = Input.mousePosition;
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.main.nearClipPlane) + Camera.main.transform.forward * 20.0f);
             ObjectPool.Instance.SpawnFromPool(item.itemModelTag, mouseWorldPosition, Quaternion.identity);
@@ -65,7 +65,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private bool AreRectsOverlapping(RectTransform rect1, RectTransform rect2)
     {
-
         // Calculate adjusted positions based on anchor points
         Vector2 rect1Position = GetBottomLeftCornerPosition(rect1);
         Vector2 rect2Position = GetBottomLeftCornerPosition(rect2);
@@ -88,7 +87,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Vector3 localBottomLeftCorner = new Vector3(-rectTransform.rect.width * rectTransform.pivot.x,
                                                     -rectTransform.rect.height * rectTransform.pivot.y,
                                                     0);
-
         return rectTransform.TransformPoint(localBottomLeftCorner);
     }
 

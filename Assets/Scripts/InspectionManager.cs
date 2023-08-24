@@ -33,6 +33,7 @@ public class InspectionManager : MonoBehaviour
                 regularCam.enabled = false;
                 inspectCam.enabled = true;
                 finishSwitch = true;
+                InventoryManager.instance.isLocked = true;
                 Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
                 if (selectedItem != null)
                 {
@@ -45,6 +46,7 @@ public class InspectionManager : MonoBehaviour
         }
         else
         {
+            InventoryManager.instance.isLocked = false;
             inspectCam.enabled = false;
             regularCam.enabled = true;
             if (currentView != null) {
