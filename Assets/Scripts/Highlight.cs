@@ -31,7 +31,7 @@ public class Highlight : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.transform.tag == "Interactable") // if clicked, put in to slot
+                    if (hit.transform.gameObject == gameObject) // if clicked, put in to slot
                     {
                         if (InventoryManager.instance.AddItem(item))
                         {

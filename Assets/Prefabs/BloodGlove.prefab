@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4699587066646642001}
   - component: {fileID: 8896434146019928167}
   - component: {fileID: 8276230501230718069}
+  - component: {fileID: 4996724861934549164}
   m_Layer: 3
   m_Name: BloodGlove
   m_TagString: Interactable
@@ -166,3 +167,16 @@ MonoBehaviour:
   itemDesc: A soaked in blood glove
   verticalSpeed: 5
   horizontalSpeed: 5
+--- !u!114 &4996724861934549164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697972037622873320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796195a22b7d7e44fa3d3adbddb9bb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: BloodGlove

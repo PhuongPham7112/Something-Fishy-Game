@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    [System.Serializable]
     public class Pool
     {
         public string tag;

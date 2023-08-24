@@ -8,8 +8,9 @@ public class InspectionManager : MonoBehaviour
     public Camera inspectCam;
     
     private Camera regularCam;
-    private bool inViewMode = false;
+    public bool inViewMode = false;
     private bool finishSwitch = false;
+    private GameObject currentView;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +40,8 @@ public class InspectionManager : MonoBehaviour
                     Debug.Log("Observe! " + selectedItem.name);
 
                     Vector3 worldPoint = inspectCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, inspectCam.nearClipPlane));
-                    GameObject view = Instantiate(selectedItem.itemModel, new Vector3(worldPoint.x, worldPoint.y, 0) + inspectCam.transform.forward * 10.0f, Quaternion.identity);
-                    view.GetComponent<Rigidbody>().isKinematic = true;
+                    currentView = Instantiate(selectedItem.itemModel, new Vector3(worldPoint.x, worldPoint.y, 0) + inspectCam.transform.forward * 10.0f, Quaternion.identity);
+                    currentView.GetComponent<Rigidbody>().isKinematic = true;
                 }
             }
         }
@@ -48,6 +49,7 @@ public class InspectionManager : MonoBehaviour
         {
             inspectCam.enabled = false;
             regularCam.enabled = true;
+            Destroy(currentView);
             finishSwitch = false;
         }
     }
