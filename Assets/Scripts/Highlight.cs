@@ -10,6 +10,7 @@ public class Highlight : MonoBehaviour
     private Color startcolor;
     private Renderer objRenderer;
     private float maxDist = 5.0f;
+    private Poolable poolable;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class Highlight : MonoBehaviour
         objRenderer = GetComponent<Renderer>();
         startcolor = objRenderer.material.color;
         player = PlayerSingleton.Instance.gameObject;
+        poolable = GetComponent<Poolable>();
     }
 
     // Update is called once per frame
@@ -35,7 +37,7 @@ public class Highlight : MonoBehaviour
                     {
                         if (InventoryManager.instance.AddItem(item))
                         {
-                            Destroy(gameObject);
+                            poolable.ReturnToPool();
                         }
                     }
                 }

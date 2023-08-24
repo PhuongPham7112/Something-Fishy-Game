@@ -48,7 +48,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             Debug.Log("Outside = drop object");
             Vector3 mouseScreenPosition = Input.mousePosition;
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.main.nearClipPlane) + Camera.main.transform.forward * 20.0f);
-            Instantiate(item.itemModel, mouseWorldPosition, Quaternion.identity);
+            ObjectPool.Instance.SpawnFromPool(item.itemModelTag, mouseWorldPosition, Quaternion.identity);
             Destroy(gameObject);
         }
         else

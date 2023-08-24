@@ -19,3 +19,4 @@ MonoBehaviour:
   imageSprite: {fileID: 21300000, guid: b5dd2cd842f8c454b8a8c18471280b76, type: 3}
   itemModel: {fileID: 8697972037622873320, guid: 7b3b1e9c814175540971c498151fa83e,
     type: 3}
+  itemModelTag: BloodGlove

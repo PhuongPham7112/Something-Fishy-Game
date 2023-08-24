@@ -23,7 +23,6 @@ public class InspectionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Switch mode");
             inViewMode = !inViewMode;
         }
 
@@ -37,11 +36,10 @@ public class InspectionManager : MonoBehaviour
                 Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
                 if (selectedItem != null)
                 {
-                    Debug.Log("Observe! " + selectedItem.name);
-
                     Vector3 worldPoint = inspectCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, inspectCam.nearClipPlane));
-                    currentView = Instantiate(selectedItem.itemModel, new Vector3(worldPoint.x, worldPoint.y, 0) + inspectCam.transform.forward * 10.0f, Quaternion.identity);
+                    currentView = ObjectPool.Instance.SpawnFromPool(selectedItem.itemModelTag, new Vector3(worldPoint.x, worldPoint.y, 0) + inspectCam.transform.forward * 10.0f, Quaternion.identity);
                     currentView.GetComponent<Rigidbody>().isKinematic = true;
+                    currentView.GetComponent<InspectableItem>().enabled = true;
                 }
             }
         }
@@ -49,7 +47,10 @@ public class InspectionManager : MonoBehaviour
         {
             inspectCam.enabled = false;
             regularCam.enabled = true;
-            Destroy(currentView);
+            if (currentView != null) {
+                currentView.GetComponent<Poolable>().ReturnToPool();
+                currentView.GetComponent<InspectableItem>().enabled = false;
+            } 
             finishSwitch = false;
         }
     }

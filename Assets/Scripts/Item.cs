@@ -15,7 +15,8 @@ public class Item : ScriptableObject
 
     [Header("Both")]
     public Sprite imageSprite;
-    public GameObject itemModel;
+    public string itemModelTag;
+
     public enum ItemType
     {
         Document,

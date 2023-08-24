@@ -31,13 +31,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697972037622873320}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.55225563, y: 4.4165115, z: 12.998908}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8946416674250211329
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697972037622873320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e6a6bb41011a504085b9e9d30f2c414, type: 3}
   m_Name: 
@@ -165,6 +165,7 @@ MonoBehaviour:
   inspectPoint: {fileID: 9208356299408212613}
   itemName: Bloody glove
   itemDesc: A soaked in blood glove
+  turn: {x: 0, y: 0}
   verticalSpeed: 5
   horizontalSpeed: 5
 --- !u!114 &4996724861934549164
