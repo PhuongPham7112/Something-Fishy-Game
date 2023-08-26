@@ -47,7 +47,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (!AreRectsOverlapping(rect, rootRect))
         {
             Vector3 mouseScreenPosition = Input.mousePosition;
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.main.nearClipPlane) + Camera.main.transform.forward * 20.0f);
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.main.nearClipPlane) + Camera.main.transform.forward * 10.0f);
             ObjectPool.Instance.SpawnFromPool(item.itemModelTag, mouseWorldPosition, Quaternion.identity);
             Destroy(gameObject);
         }

@@ -30,7 +30,10 @@ public class InspectableItem : MonoBehaviour
         // Check if the scroll input is not zero
         if (scrollInput != 0f)
         {
-            Debug.Log("Mouse wheel scroll input: " + scrollInput);
+            float sign = Mathf.Sign(scrollInput);
+            transform.localScale = ((transform.localScale.x < 200.0f && sign > 0.0f) || (transform.localScale.x > 50.0f && sign < 0.0f )) 
+                ? transform.localScale + Mathf.Sign(scrollInput) * new Vector3(10.0f, 10.0f, 10.0f) 
+                : transform.localScale;
         }
 
         if (Input.GetMouseButton(0))

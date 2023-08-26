@@ -13,8 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private CapsuleCollider capsuleCollider;
-    private GameObject viewObject;
     private float timeCount = 0.0f;
+    // Define the maximum and minimum rotation angles
+    float maxRotationAngle = -60f;
+    float minRotationAngle = -120f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,37 +25,36 @@ public class PlayerMovement : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
-    // W = up, A = left, D = right, S = down
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
     {
         // Moving Forward
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.Space))
         {
-            Vector3 forwardMovement = - transform.up * speed * Time.fixedDeltaTime;
+            Vector3 forwardMovement = speed * Time.fixedDeltaTime * - transform.up;
             rb.MovePosition(rb.position + forwardMovement);
         }
 
         // Moving Up
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            Vector3 upMovement = Vector3.up * upDownSpeed * Time.fixedDeltaTime;
+            Vector3 upMovement = Time.fixedDeltaTime * upDownSpeed * Vector3.up;
             rb.MovePosition(rb.position + upMovement);
         }
 
         // Moving Down
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            Vector3 downMovement = Vector3.down * upDownSpeed * Time.fixedDeltaTime;
+            Vector3 downMovement = Time.fixedDeltaTime * upDownSpeed * Vector3.down;
             rb.MovePosition(rb.position + downMovement);
         }
 
         Quaternion newRotation = Quaternion.identity;
+        Debug.Log(transform.localRotation.x);
         // Rotating Left
         if (Input.GetKey(KeyCode.A))
         {
@@ -72,15 +73,27 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             newRotation = Quaternion.AngleAxis(turnSpeed * Time.fixedDeltaTime, Vector3.right);
+            Quaternion rotatedRotation = rb.rotation * newRotation;
+
+            // Clamp the rotation angle between the minimum and maximum values
+            float rotationX = Mathf.Clamp(rotatedRotation.eulerAngles.x, minRotationAngle, maxRotationAngle);
+            rotatedRotation.eulerAngles = new Vector3(rotationX, rotatedRotation.eulerAngles.y, rotatedRotation.eulerAngles.z);
+
             // Apply the angular velocity to the Rigidbody
-            rb.MoveRotation(rb.rotation * newRotation);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, rotatedRotation, 5.0f * Time.deltaTime));
         }
         // Turning up
         else if (Input.GetKey(KeyCode.W))
         {
             newRotation = Quaternion.AngleAxis(-turnSpeed * Time.fixedDeltaTime, Vector3.right);
+            Quaternion rotatedRotation = rb.rotation * newRotation;
+
+            // Clamp the rotation angle between the minimum and maximum values
+            float rotationX = Mathf.Clamp(rotatedRotation.eulerAngles.x, minRotationAngle, maxRotationAngle);
+            rotatedRotation.eulerAngles = new Vector3(rotationX, rotatedRotation.eulerAngles.y, rotatedRotation.eulerAngles.z);
+
             // Apply the angular velocity to the Rigidbody
-            rb.MoveRotation(rb.rotation * newRotation);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, rotatedRotation, 5.0f * Time.deltaTime));
         }
         else
         {
@@ -96,5 +109,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
         timeCount += Time.deltaTime;
+
+        
     }
 }
