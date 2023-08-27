@@ -11,6 +11,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private RectTransform rect;
     private Transform parentAfterDrag;
     public Item item;
+    private float maxDist = 10.0f;
 
     private void Start()
     {
@@ -46,18 +47,43 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // check if outside of Toolbar
         if (!AreRectsOverlapping(rect, rootRect))
         {
-            Vector3 mouseScreenPosition = Input.mousePosition;
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.main.nearClipPlane) + Camera.main.transform.forward * 10.0f);
-            ObjectPool.Instance.SpawnFromPool(item.itemModelTag, mouseWorldPosition, Quaternion.identity);
-            Destroy(gameObject);
+            // if mouse enter another interactable object
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, maxDist + 3f)) // dropped on an item
+            {
+                GameObject target = hit.transform.gameObject;
+                Highlight highlightComponent = target.GetComponent<Highlight>();
+                if (highlightComponent != null) // highlightable item
+                {
+                    Debug.Log("Interact with " + target.name);
+                    highlightComponent.CallAction(false, item.itemUnlockKey);
+                }
+                ReturnToInventory();
+            } 
+            else // otherwise, drop into world space
+            {
+                DropItemToWorld();
+            }
         }
-        else
+        else // object still within inventory's UI
         {
-            img.raycastTarget = true;
-            transform.SetParent(parentAfterDrag);
+            ReturnToInventory();
         }
     }
 
+    private void ReturnToInventory()
+    {
+        img.raycastTarget = true;
+        transform.SetParent(parentAfterDrag);
+    }
+
+    private void DropItemToWorld()
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane) + Camera.main.transform.forward * maxDist);
+        ObjectPool.Instance.SpawnFromPool(item.itemModelTag, mouseWorldPosition, Quaternion.identity);
+        Destroy(gameObject);
+    }
     public void SetInitialParent(Transform parent)
     {
         parentAfterDrag = parent;
@@ -72,9 +98,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // Calculate adjusted sizes
         Vector2 rect1Size = ConvertSizeToWorldToScreenSpace(rect1);
         Vector2 rect2Size = ConvertSizeToWorldToScreenSpace(rect2);
-
-        Debug.Log(rect1Position + " " + rect1Size);
-        Debug.Log(rect2Position + " " + rect2Size);
 
         Rect rect1Rect = new Rect(rect1Position, rect1Size);
         Rect rect2Rect = new Rect(rect2Position, rect2Size);

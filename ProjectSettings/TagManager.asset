@@ -10,13 +10,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Interactable
+  - InteractableUI
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - InteractableComputer
+  - InteractableDesk
+  - InteractableBookShelf
+  - Player
   - 
   - 
   - 

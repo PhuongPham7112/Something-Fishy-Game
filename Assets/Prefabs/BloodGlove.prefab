@@ -66,7 +66,6 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 851212907205135456, guid: 40df87fadd66ae24fb7c081c23d1ea17, type: 3}
   - {fileID: 851212907205135456, guid: cb9591b9242a1d9449952cac79546ba5, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -168,6 +167,9 @@ MonoBehaviour:
   turn: {x: 0, y: 0}
   verticalSpeed: 5
   horizontalSpeed: 5
+  zoomSpeed: 0.1
+  minZoom: 0.5
+  maxZoom: 2
 --- !u!114 &4996724861934549164
 MonoBehaviour:
   m_ObjectHideFlags: 0

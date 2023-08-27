@@ -12,10 +12,12 @@ public class Item : ScriptableObject
 
     [Header("Only UI")]
     public bool stackable = false;
+    public string readableContent;
 
     [Header("Both")]
     public Sprite imageSprite;
     public string itemModelTag;
+    public string itemUnlockKey; // indicate which lock to open
 
     public enum ItemType
     {

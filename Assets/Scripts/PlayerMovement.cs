@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Moving Forward
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !Physics.Raycast(transform.position, transform.forward, 1f))
         {
             Vector3 forwardMovement = speed * Time.fixedDeltaTime * - transform.up;
             rb.MovePosition(rb.position + forwardMovement);
@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Quaternion newRotation = Quaternion.identity;
-        Debug.Log(transform.localRotation.x);
         // Rotating Left
         if (Input.GetKey(KeyCode.A))
         {
@@ -109,7 +108,5 @@ public class PlayerMovement : MonoBehaviour
             
         }
         timeCount += Time.deltaTime;
-
-        
     }
 }
