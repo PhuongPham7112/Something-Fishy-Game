@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: c09847e662d8c7d40a589476df620f79, type: 2}
+  actionFunction: {fileID: 0}
+  lockWord: 
+  secondActionFunction: {fileID: 0}
 --- !u!114 &8276230501230718069
 MonoBehaviour:
   m_ObjectHideFlags: 0

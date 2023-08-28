@@ -56,7 +56,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 Highlight highlightComponent = target.GetComponent<Highlight>();
                 if (highlightComponent != null) // highlightable item
                 {
-                    Debug.Log("Interact with " + target.name);
+                    Debug.Log("Interact with " + target.name + " giving " + item.itemUnlockKey);
                     highlightComponent.CallAction(false, item.itemUnlockKey);
                 }
                 ReturnToInventory();

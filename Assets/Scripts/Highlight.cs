@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class Highlight : MonoBehaviour
 {
 
@@ -31,8 +31,7 @@ public class Highlight : MonoBehaviour
         player = PlayerSingleton.Instance.gameObject;
         poolable = GetComponent<Poolable>();
 
-        
-        if (actionFunction != null && lockWord != null && secondActionFunction != null)
+        if (actionFunction != null && !string.IsNullOrEmpty(lockWord))
         {
             Debug.Log("Requires keyword " + lockWord);
             actionFunction.SetRequirement(lockWord, secondActionFunction); // set all the requirements
