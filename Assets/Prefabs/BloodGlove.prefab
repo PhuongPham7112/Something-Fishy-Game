@@ -170,9 +170,9 @@ MonoBehaviour:
   turn: {x: 0, y: 0}
   verticalSpeed: 5
   horizontalSpeed: 5
-  zoomSpeed: 0.1
-  minZoom: 0.5
-  maxZoom: 2
+  zoomSpeed: 10
+  minZoom: 50
+  maxZoom: 200
 --- !u!114 &4996724861934549164
 MonoBehaviour:
   m_ObjectHideFlags: 0

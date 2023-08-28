@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e808ae0ae60e11148b9f6823a11df92f, type: 3}
-  m_Name: BloodyGlove
+  m_Name: LabKey
   m_EditorClassIdentifier: 
-  type: 4
-  actionType: 3
+  type: 3
+  actionType: 0
   range: {x: 5, y: 4}
   stackable: 0
-  readableContent: A blood-soaked glove
-  imageSprite: {fileID: 21300000, guid: b5dd2cd842f8c454b8a8c18471280b76, type: 3}
-  itemModelTag: BloodGlove
-  itemUnlockKey: 
+  readableContent: Dr. Thorn's key to the lab
+  imageSprite: {fileID: 21300000, guid: b7e2e04edecd8bc44930955a841ebcf0, type: 3}
+  itemModelTag: LabKey
+  itemUnlockKey: labkey

@@ -11,17 +11,11 @@ public class InspectableItem : MonoBehaviour
     [SerializeField] private Vector2 turn;
 
     [Header("Physics")]
-    public float verticalSpeed;
-    public float horizontalSpeed;
-    public float zoomSpeed = 10.0f;
+    public float verticalSpeed = 5f;
+    public float horizontalSpeed = 5f;
+    public float zoomSpeed = 0.1f;
     public float minZoom = 0.5f;
     public float maxZoom = 2.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,8 +25,8 @@ public class InspectableItem : MonoBehaviour
         if (scrollInput != 0f)
         {
             float sign = Mathf.Sign(scrollInput);
-            transform.localScale = ((transform.localScale.x < 200.0f && sign > 0.0f) || (transform.localScale.x > 50.0f && sign < 0.0f )) 
-                ? transform.localScale + Mathf.Sign(scrollInput) * new Vector3(10.0f, 10.0f, 10.0f) 
+            transform.localScale = ((transform.localScale.x < maxZoom && sign > 0.0f) || (transform.localScale.x > minZoom && sign < 0.0f )) 
+                ? transform.localScale + Mathf.Sign(scrollInput) * new Vector3(zoomSpeed, zoomSpeed, zoomSpeed) 
                 : transform.localScale;
         }
 

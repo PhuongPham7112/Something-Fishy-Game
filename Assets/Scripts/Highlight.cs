@@ -20,12 +20,12 @@ public class Highlight : MonoBehaviour
     void Start()
     {
         // cache original material
-        objRenderer = GetComponent<Renderer>();
-        originalMaterial = objRenderer.material;
+        //objRenderer = GetComponent<Renderer>();
+        //originalMaterial = objRenderer.material;
 
         // Create a new material instance for highlighting
-        highlightMaterial = new Material(originalMaterial);
-        highlightMaterial.EnableKeyword("_EMISSION");
+        //highlightMaterial = new Material(originalMaterial);
+        //highlightMaterial.EnableKeyword("_EMISSION");
 
         // object pooling
         player = PlayerSingleton.Instance.gameObject;
@@ -43,7 +43,7 @@ public class Highlight : MonoBehaviour
     void Update()
     {
         // check if clicked
-        if (Input.GetMouseButtonDown(0))
+        if (!InventoryManager.instance.isLocked && Input.GetMouseButtonDown(0)) // if click while not in inspection mode
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -74,20 +74,20 @@ public class Highlight : MonoBehaviour
     void OnMouseEnter()
     {
         // highlight
-        if (Vector3.Distance(transform.position, player.transform.position) < maxDist)
+        if (!InventoryManager.instance.isLocked && Vector3.Distance(transform.position, player.transform.position) < maxDist)
         {
             // Set the emissive color to make the object appear highlighted
-            highlightMaterial.SetColor("_EmissionColor", Color.white * 0.2f);
+            //highlightMaterial.SetColor("_EmissionColor", Color.white * 0.2f);
 
             // Apply the highlight material to the renderer
-            objRenderer.material = highlightMaterial;
+            //objRenderer.material = highlightMaterial;
         }
         
     }
     void OnMouseExit()
     {
         // Restore the original material
-        objRenderer.material = originalMaterial;
+        //objRenderer.material = originalMaterial;
     }
 
     public void CallAction(bool isClicked, string key = "")
