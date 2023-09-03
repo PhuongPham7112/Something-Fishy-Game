@@ -7136,7 +7136,7 @@ MonoBehaviour:
   turnSpeed: 75
   speed: 20
   upDownSpeed: 15
-  waterPlane: {fileID: 919132148220173444}
+  waterPlane: {fileID: 543450652496250430}
 --- !u!1001 &481055493215311612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7284,7 +7284,7 @@ PrefabInstance:
     - target: {fileID: 8317725085613494134, guid: e300db5ce7533544db1efe1363497f56,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -43.193
+      value: -45.26
       objectReference: {fileID: 0}
     - target: {fileID: 8317725085613494134, guid: e300db5ce7533544db1efe1363497f56,
         type: 3}
@@ -7326,7 +7326,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2059722737289494818, guid: e300db5ce7533544db1efe1363497f56, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7338,6 +7339,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8145753277093897917}
+    - targetCorrespondingSourceObject: {fileID: 745406992531885511, guid: e300db5ce7533544db1efe1363497f56,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e300db5ce7533544db1efe1363497f56, type: 3}
 --- !u!1 &1047911711892047533
 GameObject:
