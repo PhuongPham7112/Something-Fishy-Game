@@ -6,6 +6,7 @@ public class InspectionManager : MonoBehaviour
 {
     public static InspectionManager instance;
     public Camera inspectCam;
+    public InspectionPanel inspectionPanel;
     
     private Camera regularCam;
     public bool inViewMode = false;
@@ -37,7 +38,7 @@ public class InspectionManager : MonoBehaviour
                 regularCam.enabled = false;
                 inspectCam.enabled = true;
                 InventoryManager.instance.isLocked = true;
-                
+                inspectionPanel.ChangePanelVisibility(true);
                 if (selectedItem != null)
                 {
                     currentItem = selectedItem;
@@ -49,7 +50,7 @@ public class InspectionManager : MonoBehaviour
                 }
                 finishSwitch = true;
             }
-            else if (selectedItem != currentItem) // newly updated selected item
+            else if (selectedItem != null && selectedItem != currentItem) // newly updated selected item
             {
                 Debug.Log("Update current view");
                 currentView.GetComponent<Poolable>().ReturnToPool();
@@ -64,12 +65,15 @@ public class InspectionManager : MonoBehaviour
                 currentView = newView;
                 currentItem = selectedItem;
             }
+            inspectionPanel.ChangeText(currentItem.readableContent);
         }
         else
         {
             InventoryManager.instance.isLocked = false;
             inspectCam.enabled = false;
             regularCam.enabled = true;
+            inspectionPanel.ChangePanelVisibility(false);
+            inspectionPanel.ChangeText("");
             if (currentView != null) {
                 currentView.GetComponent<Poolable>().ReturnToPool();
                 currentView.GetComponent<InspectableItem>().enabled = false;
