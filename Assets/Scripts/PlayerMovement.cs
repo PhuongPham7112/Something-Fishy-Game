@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion defaultRotation = Quaternion.Euler(-90f, transform.localEulerAngles.y, transform.localEulerAngles.z);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, defaultRotation, 20.0f * Time.deltaTime));
-            if (timeCount > 3.0f)
+            if (timeCount > 1.5f)
             {
                 // Ensure that the Rigidbody is completely stopped
                 rb.velocity = Vector3.zero;

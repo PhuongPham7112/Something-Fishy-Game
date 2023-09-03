@@ -1692,8 +1692,6 @@ GameObject:
   - component: {fileID: 5887837657341813390}
   - component: {fileID: 8419628675413376877}
   - component: {fileID: 3285319756031150407}
-  - component: {fileID: 6276469536826895827}
-  - component: {fileID: 3549925000009695204}
   - component: {fileID: 2935187633968684907}
   m_Layer: 8
   m_Name: Drawer_lo
@@ -1789,36 +1787,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4738513, y: 0.14827098, z: 0.34897768}
   m_Center: {x: -0.25081134, y: -0.41118547, z: -0.07595515}
---- !u!114 &6276469536826895827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2356309189951656485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23207bbd482fa549a4e4aca8813fddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  actionFunction: {fileID: 3549925000009695204}
-  lockWord: 
-  secondActionFunction: {fileID: 0}
---- !u!114 &3549925000009695204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2356309189951656485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b65b6fc87effc44837ccfc4f982a0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pullDirection: 0
-  pullDegree: 0
 --- !u!54 &2935187633968684907
 Rigidbody:
   m_ObjectHideFlags: 0

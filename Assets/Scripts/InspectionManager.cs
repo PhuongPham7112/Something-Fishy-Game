@@ -46,7 +46,8 @@ public class InspectionManager : MonoBehaviour
                     currentView.GetComponent<Highlight>().enabled = false;
                     currentView.GetComponent<Rigidbody>().isKinematic = true;
                     currentView.GetComponent<InspectableItem>().enabled = true;
-                    
+                    currentView.transform.GetChild(0).gameObject.SetActive(false);
+
                 }
                 finishSwitch = true;
             }
@@ -61,6 +62,7 @@ public class InspectionManager : MonoBehaviour
                 newView.GetComponent<Highlight>().enabled = false;
                 newView.GetComponent<Rigidbody>().isKinematic = true;
                 newView.GetComponent<InspectableItem>().enabled = true;
+                newView.transform.GetChild(0).gameObject.SetActive(false);
 
                 currentView = newView;
                 currentItem = selectedItem;
@@ -78,6 +80,7 @@ public class InspectionManager : MonoBehaviour
                 currentView.GetComponent<Poolable>().ReturnToPool();
                 currentView.GetComponent<InspectableItem>().enabled = false;
                 currentView.GetComponent<Highlight>().enabled = true;
+                currentView.transform.GetChild(0).gameObject.SetActive(true);
             } 
             finishSwitch = false;
         }

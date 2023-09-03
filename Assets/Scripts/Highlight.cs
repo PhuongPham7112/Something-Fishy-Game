@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
+
 public class Highlight : MonoBehaviour
 {
 
@@ -9,24 +11,15 @@ public class Highlight : MonoBehaviour
     [SerializeField] public InteractableFunctionality actionFunction = null;
     [SerializeField] public string lockWord = null;
     [SerializeField] public InteractableFunctionality secondActionFunction = null;
+    [SerializeField] public TextMeshPro hoverText;
+
     private GameObject player;
-    private Material originalMaterial;
-    private Material highlightMaterial;
-    private Renderer objRenderer;
     private float maxDist = 10.0f;
     private Poolable poolable;
 
     // Start is called before the first frame update
     void Start()
     {
-        // cache original material
-        //objRenderer = GetComponent<Renderer>();
-        //originalMaterial = objRenderer.material;
-
-        // Create a new material instance for highlighting
-        //highlightMaterial = new Material(originalMaterial);
-        //highlightMaterial.EnableKeyword("_EMISSION");
-
         // object pooling
         player = PlayerSingleton.Instance.gameObject;
         poolable = GetComponent<Poolable>();
@@ -36,7 +29,7 @@ public class Highlight : MonoBehaviour
             Debug.Log("Requires keyword " + lockWord);
             actionFunction.SetRequirement(lockWord, secondActionFunction); // set all the requirements
         }
-            
+        hoverText.enabled = false;
     }
 
     // Update is called once per frame
@@ -76,18 +69,13 @@ public class Highlight : MonoBehaviour
         // highlight
         if (!InventoryManager.instance.isLocked && Vector3.Distance(transform.position, player.transform.position) < maxDist)
         {
-            // Set the emissive color to make the object appear highlighted
-            //highlightMaterial.SetColor("_EmissionColor", Color.white * 0.2f);
-
-            // Apply the highlight material to the renderer
-            //objRenderer.material = highlightMaterial;
+            hoverText.enabled = true;
         }
         
     }
     void OnMouseExit()
     {
-        // Restore the original material
-        //objRenderer.material = originalMaterial;
+        hoverText.enabled = false;
     }
 
     public void CallAction(bool isClicked, string key = "")

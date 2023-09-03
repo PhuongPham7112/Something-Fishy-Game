@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class HoverText : MonoBehaviour
 {
-    private Quaternion initialRotation;
-    private Transform parentTransform;
+    private GameObject player;
 
     private void Start()
     {
-        // Store the initial rotation of the child object.
-        initialRotation = transform.localRotation;
-
-        // Find and store the parent transform.
-        parentTransform = transform.parent;
+        player = PlayerSingleton.Instance.gameObject;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        // Counteract the parent's rotation by applying the inverse.
-        transform.rotation = parentTransform.rotation * initialRotation;
+        Vector3 lookDirection = transform.position - player.transform.position;
+        transform.rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
     }
 }
