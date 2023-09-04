@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     // Define the maximum and minimum rotation angles
     float maxRotationAngle = -60f;
     float minRotationAngle = -120f;
+    float startDescendingTime;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         float yDifference = waterPlane.position.y - transform.position.y;
+        bool reachMaxWaterLevel = yDifference > 0f;
 
+        // Check if the current Y position is higher than the maximum allowed.
+        if (yDifference < 0f)
+        {
+            // Calculate the new Y position after descending.
+            float newYPosition = waterPlane.position.y;
+
+            // Set the new Y position while preserving the object's X and Z coordinates.
+            rb.MovePosition(new Vector3(transform.position.x, newYPosition, transform.position.z));
+        }
         // Moving Forward
         if (Input.GetKey(KeyCode.Space))
         {
@@ -37,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Moving Up
-        if (Input.GetKey(KeyCode.LeftShift) && yDifference > 0f)
+        if (Input.GetKey(KeyCode.LeftShift) && reachMaxWaterLevel)
         {
             Vector3 upMovement = Time.fixedDeltaTime * upDownSpeed * Vector3.up;
             rb.MovePosition(rb.position + upMovement);
@@ -79,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, rotatedRotation, 5.0f * Time.deltaTime));
         }
         // Turning up
-        else if (Input.GetKey(KeyCode.W) && yDifference > 0f)
+        else if (Input.GetKey(KeyCode.W) && reachMaxWaterLevel)
         {
             newRotation = Quaternion.AngleAxis(-turnSpeed * Time.fixedDeltaTime, Vector3.right);
             Quaternion rotatedRotation = rb.rotation * newRotation;
@@ -102,7 +113,6 @@ public class PlayerMovement : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
                 timeCount = 0.0f;
             }
-            
         }
         timeCount += Time.deltaTime;
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5692945617237069519}
   - component: {fileID: 2352243071854105806}
   - component: {fileID: 4019043953962900783}
+  - component: {fileID: 7648357011380378080}
   m_Layer: 0
   m_Name: WaterPlane
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7648357011380378080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759528463663364885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf0a363d67e1e045825731e7040169d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetYPosition: -27.5
+  duration: 600
