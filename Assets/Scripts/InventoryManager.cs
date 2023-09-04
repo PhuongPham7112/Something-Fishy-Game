@@ -86,6 +86,7 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
+                Debug.Log("Found a slot at " + slot.name);
                 SpawnNewItem(newItem, slot);
                 return true;
             }
@@ -110,8 +111,6 @@ public class InventoryManager : MonoBehaviour
 
     private void SpawnNewItem(Item item, InventorySlot slot)
     {
-        if (item == null) Debug.Log("null item");
-        if (slot == null) Debug.Log("null slot");
         GameObject newInvItem = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newInvItem.GetComponent<InventoryItem>();
         inventoryItem.InitializeItem(item);

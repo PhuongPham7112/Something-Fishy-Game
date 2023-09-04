@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnlockableItem : InteractableFunctionality
 {
+    [SerializeField] private bool destroyOnUnlock = false;
     private string requiredKey;
     private InteractableFunctionality secondaryAction = null;
     private bool unlocked = false;
@@ -23,7 +24,7 @@ public class UnlockableItem : InteractableFunctionality
             unlocked = true;
             if (secondaryAction != null)
                 secondaryAction.Action(true); // assume the secondary action is click-only
-            else
+            if (destroyOnUnlock)
                 Destroy(gameObject);
         }
     }

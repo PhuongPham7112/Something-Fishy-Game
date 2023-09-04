@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class DispendItem : InteractableFunctionality
 {
+    public Item droppingItem;
+
     public override void Action(bool isClicked, string key = "")
     {
-        base.Action(isClicked, key);
-    }
-
-    public override void ClearEffect()
-    {
-        base.ClearEffect();
+        // dispense withheld item to the player's inventory
+        InventoryManager.instance.AddItem(droppingItem);
     }
 }

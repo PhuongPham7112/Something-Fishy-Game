@@ -676,7 +676,6 @@ GameObject:
   - component: {fileID: 142952817553985531}
   - component: {fileID: 4265038233880556941}
   - component: {fileID: 7798686833002448817}
-  - component: {fileID: 4829293069288724741}
   - component: {fileID: 1095966705388561585}
   - component: {fileID: 1979996684609799141}
   m_Layer: 10
@@ -824,23 +823,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openAxis: 1
   openDegree: -45
---- !u!114 &4829293069288724741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548617428233190412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23207bbd482fa549a4e4aca8813fddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  actionFunction: {fileID: 7798686833002448817}
-  lockWord: 
-  secondActionFunction: {fileID: 0}
-  hoverText: {fileID: 8540101243988088442}
 --- !u!65 &1095966705388561585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5799,7 +5781,7 @@ MonoBehaviour:
   item: {fileID: 0}
   actionFunction: {fileID: 5492531479793332938}
   lockWord: labcode202
-  secondActionFunction: {fileID: 0}
+  secondActionFunction: {fileID: 7798686833002448817}
   hoverText: {fileID: 6154784115757083263}
 --- !u!114 &5492531479793332938
 MonoBehaviour:
@@ -5813,6 +5795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b491419cafbe60345be21f802bce78e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOnUnlock: 1
 --- !u!23 &5171298802126658817
 MeshRenderer:
   m_ObjectHideFlags: 0

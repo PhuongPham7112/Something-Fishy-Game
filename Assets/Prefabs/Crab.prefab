@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38269bc3e07238449d0c544465b2bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  droppingItem: {fileID: 11400000, guid: 24384418f4cda8b47956bca2d9186402, type: 2}
 --- !u!114 &5206639105300709892
 MonoBehaviour:
   m_ObjectHideFlags: 0

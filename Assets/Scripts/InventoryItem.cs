@@ -57,9 +57,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 if (highlightComponent != null) // highlightable item
                 {
                     Debug.Log("Interact with " + target.name + " giving " + item.itemUnlockKey);
+                    ReturnToInventory();
                     highlightComponent.CallAction(false, item.itemUnlockKey);
                 }
-                ReturnToInventory();
             } 
             else // otherwise, drop into world space
             {

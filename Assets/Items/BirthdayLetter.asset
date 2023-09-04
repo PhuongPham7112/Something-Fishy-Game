@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e808ae0ae60e11148b9f6823a11df92f, type: 3}
-  m_Name: BloodyGlove
+  m_Name: BirthdayLetter
   m_EditorClassIdentifier: 
-  type: 4
-  actionType: 3
+  type: 0
+  actionType: 1
   range: {x: 5, y: 4}
   stackable: 0
-  readableContent: A blood-soaked glove, could give someone a hand
-  imageSprite: {fileID: 21300000, guid: b5dd2cd842f8c454b8a8c18471280b76, type: 3}
-  itemModelTag: BloodGlove
-  itemUnlockKey: bloodyglove
+  readableContent: Happy birthday Westwood!
+  imageSprite: {fileID: 21300000, guid: 2375d42b52f2e7f47ad5c5e465c8ce4f, type: 3}
+  itemModelTag: ReadableObject
+  itemUnlockKey: 
