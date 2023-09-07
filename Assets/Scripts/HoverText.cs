@@ -14,6 +14,16 @@ public class HoverText : MonoBehaviour
     private void Update()
     {
         Vector3 lookDirection = transform.position - player.transform.position;
-        transform.rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
+        lookDirection.y = 0; // Ignore the upward component (set y to 0)
+
+        // Check if the lookDirection is not zero (to avoid division by zero)
+        if (lookDirection != Vector3.zero)
+        {
+            // Create a rotation that points in the look direction
+            Quaternion desiredRotation = Quaternion.LookRotation(lookDirection.normalized);
+
+            // Apply the rotation to your object
+            transform.rotation = desiredRotation;
+        }
     }
 }
