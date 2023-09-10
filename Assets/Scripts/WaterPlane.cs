@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaterPlane : MonoBehaviour
 {
+    public float maxYPosition = -4.0f;
     public float targetYPosition = -27.5f; // The target Y position.
     public float duration = 10f; // The duration in seconds (10 minutes).
 
@@ -29,5 +30,27 @@ public class WaterPlane : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private IEnumerator IncreaseYPosition()
+    {
+        while (transform.position.y < maxYPosition)
+        {
+            float elapsedTime = Time.time - startTime;
+            float newYPosition = Mathf.Lerp(initialPosition.y, maxYPosition, elapsedTime / duration);
+
+            // Apply the new position to the GameObject.
+            transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
+
+            yield return null;
+        }
+    }
+
+    public void RestoreWaterLevel()
+    {
+        StopCoroutine(LowerYPosition());
+        initialPosition = transform.position;
+        startTime = Time.time;
+        StartCoroutine(IncreaseYPosition());
     }
 }

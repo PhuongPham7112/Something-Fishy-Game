@@ -23,6 +23,8 @@ public class Highlight : MonoBehaviour
         // object pooling
         player = PlayerSingleton.Instance.gameObject;
         poolable = GetComponent<Poolable>();
+        if (item != null)
+            lockWord = item.itemUnlockKey;
 
         if (actionFunction != null && !string.IsNullOrEmpty(lockWord))
         {
