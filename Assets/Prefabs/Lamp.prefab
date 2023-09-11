@@ -295,8 +295,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 32.168156, y: 28.378584, z: 188.12593}
-  m_Center: {x: 0.9139091, y: 3.3627625e-13, z: 93.56287}
+  m_Size: {x: 32.168156, y: 28.378584, z: 169.51717}
+  m_Center: {x: 0.91390914, y: -6.1604075e-13, z: 84.259026}
 --- !u!1 &4545675039556263042
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 8681243005033338208}
   - component: {fileID: 3489403806222168570}
   - component: {fileID: 2075827233267115890}
-  - component: {fileID: 261113533425157000}
+  - component: {fileID: 1059424827827028715}
   m_Layer: 0
   m_Name: Lamp_shade
   m_TagString: Untagged
@@ -591,8 +591,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &261113533425157000
-BoxCollider:
+--- !u!64 &1059424827827028715
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -608,10 +608,11 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 41.0809, y: 35.66561, z: 14.058812}
-  m_Center: {x: -21.98895, y: 5.025402, z: 176.17056}
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5864163134100254835, guid: 929abffd5fc61884fb1e783a25b22007, type: 3}
 --- !u!1 &8092772597097982347
 GameObject:
   m_ObjectHideFlags: 0

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   actionFunction: {fileID: 4164016587207805044}
-  lockWord: wrench
+  lockWord: crabclaw
   secondActionFunction: {fileID: 1886382182548442796}
   hoverText: {fileID: 5758011698335812739}
 --- !u!114 &4164016587207805044
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b491419cafbe60345be21f802bce78e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOnUnlock: 0
 --- !u!114 &1886382182548442796
 MonoBehaviour:
   m_ObjectHideFlags: 0

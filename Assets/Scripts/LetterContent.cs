@@ -14,10 +14,4 @@ public class LetterContent : MonoBehaviour
         textMeshPro = GetComponent<TextMeshPro>();
         textMeshPro.text = item.readableContent;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -18,6 +18,9 @@ public class UnlockableItem : InteractableFunctionality
     public override void Action(bool isClicked, string key)
     {
         Debug.Log("key " + key + " vs required key " + requiredKey);
+        Debug.Log(unlocked);
+        Debug.Log(isClicked);
+        Debug.Log(key);
         if (!unlocked && !isClicked && key != null && key == requiredKey) // unlock once something's dropped
         {
             Debug.Log("Unlocked!");

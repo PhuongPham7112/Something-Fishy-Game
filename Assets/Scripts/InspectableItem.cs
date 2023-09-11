@@ -17,7 +17,7 @@ public class InspectableItem : MonoBehaviour
     public float minZoom = 0.5f;
     public float maxZoom = 2.0f;
 
-    private void Start()
+    private void Awake()
     {
         enabled = false;
     }

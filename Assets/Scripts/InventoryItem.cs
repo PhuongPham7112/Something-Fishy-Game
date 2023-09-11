@@ -57,7 +57,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 if (highlightComponent != null && highlightComponent.lockWord == item.itemUnlockKey) // highlightable item
                 {
                     Debug.Log("Interact with " + target.name + " giving " + item.itemUnlockKey);
-                    Destroy(gameObject);
+                    if (item.disappearOnUsage)
+                        Destroy(gameObject);
+                    else
+                        ReturnToInventory();
                     highlightComponent.CallAction(false, item.itemUnlockKey);
                 }
                 else

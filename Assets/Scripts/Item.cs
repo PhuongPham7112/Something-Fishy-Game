@@ -18,6 +18,7 @@ public class Item : ScriptableObject
     public Sprite imageSprite;
     public string itemModelTag;
     public string itemUnlockKey; // indicate which lock to open
+    public bool disappearOnUsage;
 
     public enum ItemType
     {

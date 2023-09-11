@@ -43,10 +43,10 @@ public class InspectionManager : MonoBehaviour
                 {
                     currentItem = selectedItem;
                     currentView = ObjectPool.Instance.SpawnFromPool(selectedItem.itemModelTag, new Vector3(worldPoint.x, worldPoint.y, 0) + inspectCam.transform.forward * 10.0f, Quaternion.identity);
+                    currentView.GetComponent<InspectableItem>().enabled = true;
                     currentView.GetComponent<Highlight>().enabled = false;
                     currentView.GetComponent<Rigidbody>().isKinematic = true;
-                    currentView.GetComponent<InspectableItem>().enabled = true;
-                    currentView.transform.GetChild(0).gameObject.SetActive(false);
+                    currentView.transform.GetChild(0).gameObject.SetActive(false); // noted, let hover text be the first child
 
                 }
                 finishSwitch = true;
@@ -59,9 +59,9 @@ public class InspectionManager : MonoBehaviour
                 currentView.GetComponent<Highlight>().enabled = true;
 
                 GameObject newView = ObjectPool.Instance.SpawnFromPool(selectedItem.itemModelTag, new Vector3(worldPoint.x, worldPoint.y, 0) + inspectCam.transform.forward * 10.0f, Quaternion.identity);
+                newView.GetComponent<InspectableItem>().enabled = true;
                 newView.GetComponent<Highlight>().enabled = false;
                 newView.GetComponent<Rigidbody>().isKinematic = true;
-                newView.GetComponent<InspectableItem>().enabled = true;
                 newView.transform.GetChild(0).gameObject.SetActive(false);
 
                 currentView = newView;
