@@ -23,6 +23,7 @@ public class Highlight : MonoBehaviour
         // object pooling
         player = PlayerSingleton.Instance.gameObject;
         poolable = GetComponent<Poolable>();
+
         if (item != null)
             lockWord = item.itemUnlockKey;
 
@@ -68,7 +69,7 @@ public class Highlight : MonoBehaviour
 
     void OnMouseEnter()
     {
-        // highlight
+        // highlight on mouse hover
         if (!InventoryManager.instance.isLocked && Vector3.Distance(transform.position, player.transform.position) < maxDist)
         {
             hoverText.enabled = true;

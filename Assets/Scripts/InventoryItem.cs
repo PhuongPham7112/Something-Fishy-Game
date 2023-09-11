@@ -54,11 +54,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 GameObject target = hit.transform.gameObject;
                 Highlight highlightComponent = target.GetComponent<Highlight>();
-                if (highlightComponent != null) // highlightable item
+                if (highlightComponent != null && highlightComponent.lockWord == item.itemUnlockKey) // highlightable item
                 {
                     Debug.Log("Interact with " + target.name + " giving " + item.itemUnlockKey);
                     Destroy(gameObject);
                     highlightComponent.CallAction(false, item.itemUnlockKey);
+                }
+                else
+                {
+                    ReturnToInventory();
                 }
             } 
             else // otherwise, drop into world space

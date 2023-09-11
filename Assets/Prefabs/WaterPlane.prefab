@@ -96,5 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf0a363d67e1e045825731e7040169d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxYPosition: -13
   targetYPosition: -27.5
   duration: 600

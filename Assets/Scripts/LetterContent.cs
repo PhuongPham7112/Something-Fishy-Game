@@ -7,7 +7,6 @@ public class LetterContent : MonoBehaviour
 {
     Item item;
     TextMeshPro textMeshPro;
-
     void Start()
     {
         Highlight highlightComponent = GetComponentInParent<Highlight>();

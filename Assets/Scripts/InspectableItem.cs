@@ -17,7 +17,11 @@ public class InspectableItem : MonoBehaviour
     public float minZoom = 0.5f;
     public float maxZoom = 2.0f;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        enabled = false;
+    }
+
     void Update()
     {
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
