@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 8896434146019928167}
   - component: {fileID: 8276230501230718069}
   - component: {fileID: 4996724861934549164}
+  - component: {fileID: 5518354969080637275}
   m_Layer: 3
   m_Name: BloodGlove
   m_TagString: Interactable
@@ -372,3 +373,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolTag: BloodGlove
+--- !u!114 &5518354969080637275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697972037622873320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f021de637dc9d84399d0ad4696e178b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -366,9 +366,12 @@ MonoBehaviour:
   inspectPoint: {fileID: 3681086992901179189}
   itemName: 
   itemDesc: 
+  zoomX: 1
+  zoomY: 1
+  zoomZ: 1
   turn: {x: 0, y: 0}
   verticalSpeed: 5
   horizontalSpeed: 5
-  zoomSpeed: 100
   minZoom: 1000
   maxZoom: 2500
+  zoomSpeed: {x: 100, y: 100, z: 100}

@@ -8,7 +8,7 @@ public class DialogueBox : MonoBehaviour
     public static DialogueBox Instance { get; private set; }
     public List<string> currDialogue;
     private int index = 0;
-    TextMeshPro textMeshPro;
+    TextMeshProUGUI textMeshPro;
 
     private void Awake()
     {
@@ -20,6 +20,12 @@ public class DialogueBox : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        textMeshPro = GetComponent<TextMeshProUGUI>();
+        StartDialogue();
     }
 
     public void SetText(List<string> dialogue)
@@ -39,7 +45,10 @@ public class DialogueBox : MonoBehaviour
         {
             textMeshPro.text = currDialogue[index];
             index++;
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSecondsRealtime(1.5f);
         }
+
+        // Clear the text after the dialogue finishes
+        textMeshPro.text = "";
     }
 }

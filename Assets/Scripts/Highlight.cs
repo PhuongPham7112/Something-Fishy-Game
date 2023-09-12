@@ -16,6 +16,7 @@ public class Highlight : MonoBehaviour
     private GameObject player;
     private float maxDist = 10.0f;
     private Poolable poolable;
+    private ConvoTrigger convo;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Highlight : MonoBehaviour
             actionFunction.SetRequirement(lockWord, secondActionFunction); // set all the requirements
         }
         hoverText.enabled = false;
+        convo = GetComponent<ConvoTrigger>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,11 @@ public class Highlight : MonoBehaviour
                 if (hit.transform.gameObject == gameObject) // if this is clicked
                 {
                     Debug.Log("Clicked " + hit.transform.name);
+                    // If there's dialogue cue, play it
+                    if (convo != null)
+                    {
+                        convo.PlayDialogue();
+                    }
                     // decide whether to take action or collect item
                     if (item != null && InventoryManager.instance.AddItem(item))
                     {

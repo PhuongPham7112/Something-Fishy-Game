@@ -7,15 +7,17 @@ public class InspectableItem : MonoBehaviour
     [SerializeField] Transform inspectPoint;
     [SerializeField] string itemName;
     [SerializeField] string itemDesc;
-
+    [SerializeField] float zoomX = 1f;
+    [SerializeField] float zoomY = 1f;
+    [SerializeField] float zoomZ = 1f;
     [SerializeField] private Vector2 turn;
 
     [Header("Physics")]
     public float verticalSpeed = 5f;
     public float horizontalSpeed = 5f;
-    public float zoomSpeed = 0.1f;
     public float minZoom = 0.5f;
     public float maxZoom = 2.0f;
+    public Vector3 zoomSpeed = new Vector3(0.1f, 0.1f, 0.1f);
 
     private void Awake()
     {
@@ -29,8 +31,9 @@ public class InspectableItem : MonoBehaviour
         if (scrollInput != 0f)
         {
             float sign = Mathf.Sign(scrollInput);
+            
             transform.localScale = ((transform.localScale.x < maxZoom && sign > 0.0f) || (transform.localScale.x > minZoom && sign < 0.0f )) 
-                ? transform.localScale + Mathf.Sign(scrollInput) * new Vector3(zoomSpeed, zoomSpeed, zoomSpeed) 
+                ? transform.localScale + Mathf.Sign(scrollInput) * zoomSpeed
                 : transform.localScale;
         }
 
