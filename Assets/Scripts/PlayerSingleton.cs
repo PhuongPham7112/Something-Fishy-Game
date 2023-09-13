@@ -17,6 +17,4 @@ public class PlayerSingleton : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
-    // Add player-related methods and properties here
 }

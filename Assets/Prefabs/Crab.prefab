@@ -304,6 +304,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnUnlock: 0
+  unlockCue:
+  - Thanks kid
+  - Finally a hand matching my big claw!
+  - A hand for a hand
 --- !u!54 &3496814358157145765
 Rigidbody:
   m_ObjectHideFlags: 0

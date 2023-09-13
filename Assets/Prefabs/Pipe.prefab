@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 7846021344770124857}
   - component: {fileID: 4838651494484248537}
   - component: {fileID: 1830780355070807096}
+  - component: {fileID: 4835865774212766964}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -704,6 +705,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnUnlock: 0
+  unlockCue:
+  - Phew, the water should be going back up now
 --- !u!114 &1830780355070807096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,6 +721,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterPlane: {fileID: 7648357011380378080, guid: dc173ad3eeb4ec846a8151712a6ff21f,
     type: 3}
+--- !u!114 &4835865774212766964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7719618420589330917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c76527739bda7740a2fe15a393fbad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currDialogue:
+  - Could this help controlling the water level?
 --- !u!1 &8768147384749175311
 GameObject:
   m_ObjectHideFlags: 0

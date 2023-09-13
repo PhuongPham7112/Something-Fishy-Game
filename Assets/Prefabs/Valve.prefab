@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 8280929694179325703}
   - component: {fileID: 8752030392642354669}
   - component: {fileID: 2729637366840191524}
+  - component: {fileID: 6874573295954801215}
   m_Layer: 3
   m_Name: Valve
   m_TagString: Untagged
@@ -217,8 +218,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -469.5, y: -24.53, z: -182.03}
-  m_LocalScale: {x: 1581.6616, y: 1581.6616, z: 1581.6616}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1000, y: 1000, z: 1000}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 267545948855714007}
   m_Father: {fileID: 0}
@@ -372,6 +373,20 @@ MonoBehaviour:
   turn: {x: 0, y: 0}
   verticalSpeed: 5
   horizontalSpeed: 5
-  minZoom: 1000
-  maxZoom: 2500
+  minZoom: 500
+  maxZoom: 1500
   zoomSpeed: {x: 100, y: 100, z: 100}
+--- !u!114 &6874573295954801215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354655674213427643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c76527739bda7740a2fe15a393fbad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currDialogue:
+  - This must be going somewhere

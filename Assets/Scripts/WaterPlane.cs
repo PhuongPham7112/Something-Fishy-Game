@@ -35,11 +35,12 @@ public class WaterPlane : MonoBehaviour
 
     private IEnumerator IncreaseYPosition()
     {
+        float increaseDuration = duration / 3f;
         while (transform.position.y < maxYPosition)
         {
             Debug.Log("Increasing");
             float elapsedTime = Time.time - startTime;
-            float newYPosition = Mathf.Lerp(initialPosition.y, maxYPosition, 2.0f * elapsedTime / duration);
+            float newYPosition = Mathf.Lerp(initialPosition.y, maxYPosition, elapsedTime / increaseDuration);
 
             // Apply the new position to the GameObject.
             transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);

@@ -20,4 +20,4 @@ MonoBehaviour:
   imageSprite: {fileID: 21300000, guid: b5dd2cd842f8c454b8a8c18471280b76, type: 3}
   itemModelTag: BloodGlove
   itemUnlockKey: bloodyglove
-  disappearOnUnlocking: 1
+  disappearOnUsage: 1

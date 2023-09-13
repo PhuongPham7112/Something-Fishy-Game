@@ -322,7 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currDialogue:
-  - '[Computer] Dr. Westwoode: Password required'
+  - 'Dr. Westwoode: Password required'
+  - 'Hint: Date of Birth'
 --- !u!1 &3534645684475601428
 GameObject:
   m_ObjectHideFlags: 0

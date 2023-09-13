@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402769755037550137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.01239}
+  m_AnchoredPosition: {x: 0, y: -0.0174}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5925566426883023156
@@ -216,14 +216,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697972037622873320}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.55225563, y: 4.4165115, z: 12.998908}
-  m_LocalScale: {x: 41.664, y: 41.664, z: 14.01702}
+  m_LocalScale: {x: 41.664, y: 41.664, z: 41.664}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7929889392523208464}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &8946416674250211329
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -354,12 +354,15 @@ MonoBehaviour:
   inspectPoint: {fileID: 9208356299408212613}
   itemName: Bloody glove
   itemDesc: A soaked in blood glove
+  zoomX: 1
+  zoomY: 1
+  zoomZ: 1
   turn: {x: 0, y: 0}
   verticalSpeed: 5
   horizontalSpeed: 5
-  zoomSpeed: 10
   minZoom: 50
   maxZoom: 200
+  zoomSpeed: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!114 &4996724861934549164
 MonoBehaviour:
   m_ObjectHideFlags: 0

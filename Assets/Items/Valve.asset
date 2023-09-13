@@ -20,4 +20,4 @@ MonoBehaviour:
   imageSprite: {fileID: 21300000, guid: 8824bc74e3ee49f44b9e6058ae85830c, type: 3}
   itemModelTag: Valve
   itemUnlockKey: valve
-  disappearOnUnlocking: 1
+  disappearOnUsage: 1

@@ -12,6 +12,7 @@ public class EscapeItem : InteractableFunctionality
         {
             Debug.Log("Escapable");
             isEscapable = true;
+            Time.timeScale = 0f; // stop everything
             SceneManager.LoadScene("EndingScene");
         }
     }

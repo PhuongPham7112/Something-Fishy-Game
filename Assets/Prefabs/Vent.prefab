@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 758848353311509596}
   - component: {fileID: 4164016587207805044}
   - component: {fileID: 1886382182548442796}
+  - component: {fileID: 5335668911088360200}
   m_Layer: 0
   m_Name: Vent
   m_TagString: Untagged
@@ -117,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnUnlock: 0
+  unlockCue: []
 --- !u!114 &1886382182548442796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +131,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccbc5cdfb2c6854fb2ef1b221563ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5335668911088360200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592240674045873250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c76527739bda7740a2fe15a393fbad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currDialogue:
+  - If only I could open this to escape...
+  - Seems like this need a wrench-shaped thingy for detachment
 --- !u!1 &7649669758987680710
 GameObject:
   m_ObjectHideFlags: 0

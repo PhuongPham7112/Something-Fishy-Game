@@ -5960,6 +5960,7 @@ GameObject:
   - component: {fileID: 5492531479793332938}
   - component: {fileID: 5171298802126658817}
   - component: {fileID: 2825390977114035473}
+  - component: {fileID: 3252608864127135258}
   m_Layer: 10
   m_Name: Padlock
   m_TagString: Untagged
@@ -6039,6 +6040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnUnlock: 1
+  unlockCue: []
 --- !u!23 &5171298802126658817
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6108,6 +6110,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &3252608864127135258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3296509101940220654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c76527739bda7740a2fe15a393fbad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currDialogue:
+  - Hmm, I need a code
 --- !u!1 &3335135533678750780
 GameObject:
   m_ObjectHideFlags: 0
