@@ -8,7 +8,6 @@ public class DispendItem : InteractableFunctionality
 
     public override void Action(bool isClicked, string key = "")
     {
-        // dispense withheld item to the player's inventory
-        InventoryManager.instance.AddItem(droppingItem);
+        InventoryManager.instance.AddItem(droppingItem, interactAudio);
     }
 }

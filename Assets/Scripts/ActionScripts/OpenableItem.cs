@@ -19,14 +19,20 @@ public class OpenableItem : InteractableFunctionality
     {
         if (isClicked && !isOpened) // this is a click only object
         {
-            // rotate 90 degree
-            Debug.Log("Rotating");
             transform.Rotate(axes[openAxis], openDegree);
             isOpened = true;
+            if (interactAudio != null)
+            {
+                interactAudio.Play();
+            }
         } 
         else if (isOpened && isClicked)
         {
             ClearEffect();
+            if (interactAudio != null)
+            {
+                interactAudio.Play();
+            }
         }
     }
 

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5115029630253691514}
   - component: {fileID: 4186025455749586422}
   - component: {fileID: 1228270544628698228}
-  - component: {fileID: 4935476118937982145}
   - component: {fileID: 7090589922904516446}
   - component: {fileID: 2945858399173245473}
   m_Layer: 0
@@ -109,20 +108,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.01360542, y: 0.0018003131, z: 0.026347315}
   m_Center: {x: -0.005913792, y: 0.00044179946, z: 0.00008914155}
---- !u!114 &4935476118937982145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5429482480855694528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3fae5b5fba6d854699573d07aab57e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openAxis: 0
-  openDegree: 90
 --- !u!114 &7090589922904516446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +125,7 @@ MonoBehaviour:
   lockWord: 
   secondActionFunction: {fileID: 0}
   hoverText: {fileID: 630730802217211605}
+  pickupAudio: {fileID: 0}
 --- !u!54 &2945858399173245473
 Rigidbody:
   m_ObjectHideFlags: 0

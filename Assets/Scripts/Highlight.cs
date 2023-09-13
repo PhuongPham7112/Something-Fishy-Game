@@ -12,6 +12,7 @@ public class Highlight : MonoBehaviour
     [SerializeField] public string lockWord = null;
     [SerializeField] public InteractableFunctionality secondActionFunction = null;
     [SerializeField] public TextMeshPro hoverText;
+    [SerializeField] public AudioSource pickupAudio = null;
 
     private GameObject player;
     private float maxDist = 10.0f;
@@ -30,7 +31,6 @@ public class Highlight : MonoBehaviour
 
         if (actionFunction != null && !string.IsNullOrEmpty(lockWord))
         {
-            Debug.Log("Requires keyword " + lockWord);
             actionFunction.SetRequirement(lockWord, secondActionFunction); // set all the requirements
         }
         hoverText.enabled = false;
@@ -56,14 +56,14 @@ public class Highlight : MonoBehaviour
                         convo.PlayDialogue();
                     }
                     // decide whether to take action or collect item
-                    if (item != null && InventoryManager.instance.AddItem(item))
+                    if (item != null && InventoryManager.instance.AddItem(item, pickupAudio))
                     {
-                        Debug.Log("Add to inventory");
                         poolable.ReturnToPool();
-                    } else if (actionFunction != null) // call the action on object otherwise
+                    } 
+                    else if (actionFunction != null) // call the action on object otherwise
                     {
                         Debug.Log("Cannot store item, try action instead");
-                        CallAction(true);
+                        CallAction(true); // click on object
                     }
                     else
                     {

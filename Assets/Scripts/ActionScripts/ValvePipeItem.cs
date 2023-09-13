@@ -10,5 +10,9 @@ public class ValvePipeItem : InteractableFunctionality
     public override void Action(bool isClicked, string key = "")
     {
         waterPlane.RestoreWaterLevel();
+        if (interactAudio != null)
+        {
+            interactAudio.Play();
+        }
     }
 }

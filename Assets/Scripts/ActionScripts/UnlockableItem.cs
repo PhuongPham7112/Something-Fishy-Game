@@ -35,6 +35,10 @@ public class UnlockableItem : InteractableFunctionality
                 convo.currDialogue = new List<string>(unlockCue);
                 convo.PlayDialogue();
             }
+            if (interactAudio != null)
+            {
+                interactAudio.Play();
+            }
             if (secondaryAction != null)
                 secondaryAction.Action(true); // assume the secondary action is click-only
             if (destroyOnUnlock)

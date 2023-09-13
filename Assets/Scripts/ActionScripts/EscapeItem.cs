@@ -10,7 +10,10 @@ public class EscapeItem : InteractableFunctionality
     {
         if (!isEscapable) // this is a click only object
         {
-            Debug.Log("Escapable");
+            if (interactAudio != null)
+            {
+                interactAudio.Play();
+            }
             isEscapable = true;
             Time.timeScale = 0f; // stop everything
             SceneManager.LoadScene("EndingScene");

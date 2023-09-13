@@ -18,14 +18,21 @@ public class PullableItem : InteractableFunctionality
     {
         if (isClicked && !isPulled) // this is a click only object
         {
-            Debug.Log("Pulling");
             // go forward by 20 unit
             originalPosition = transform.position;
             transform.Translate(directions[pullDirection] * pullDegree);
             isPulled = true;
+            if (interactAudio != null)
+            {
+                interactAudio.Play();
+            }
         } else if (isClicked && isPulled)
         {
             ClearEffect();
+            if (interactAudio != null)
+            {
+                interactAudio.Play();
+            }
         }
     }
 

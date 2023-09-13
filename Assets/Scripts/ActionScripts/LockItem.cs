@@ -10,8 +10,11 @@ public class LockItem : InteractableFunctionality
     {
         if (isClicked && !isEscapable) // this is a click only object
         {
-            Debug.Log("Escapable");
             isEscapable = true;
+            if (interactAudio != null)
+            {
+                interactAudio.Play();
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableFunctionality : MonoBehaviour
 {
+    public AudioSource interactAudio;
     public virtual void Action(bool isClicked, string key = "") { return;  }
 
     public virtual void ClearEffect() { return; }

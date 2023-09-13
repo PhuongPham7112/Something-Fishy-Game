@@ -79,7 +79,7 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = newSlot;
     }
 
-    public bool AddItem(Item newItem) // return whether still has space or not
+    public bool AddItem(Item newItem, AudioSource pickupAudio) // return whether still has space or not
     {
         // find an empty slot
         foreach (InventorySlot slot in slots) {
@@ -88,6 +88,12 @@ public class InventoryManager : MonoBehaviour
             {
                 Debug.Log("Found a slot at " + slot.name);
                 SpawnNewItem(newItem, slot);
+                if (pickupAudio != null && !pickupAudio.isPlaying)
+                {
+                    Debug.Log("Play sound");
+                    pickupAudio.pitch = 1.5f;
+                    pickupAudio.Play();
+                }
                 return true;
             }
         }
