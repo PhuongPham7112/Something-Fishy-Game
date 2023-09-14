@@ -86,12 +86,9 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
-                Debug.Log("Found a slot at " + slot.name);
                 SpawnNewItem(newItem, slot);
-                if (pickupAudio != null && !pickupAudio.isPlaying)
+                if (pickupAudio != null)
                 {
-                    Debug.Log("Play sound");
-                    pickupAudio.pitch = 1.5f;
                     pickupAudio.Play();
                 }
                 return true;

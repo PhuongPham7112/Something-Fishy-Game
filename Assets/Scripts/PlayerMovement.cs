@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     float upDownSpeed;
     [SerializeField]
     Transform waterPlane;
+    [SerializeField]
+    ParticleSystem particle;
 
     private Rigidbody rb;
     private float timeCount = 0.0f;
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (particle.isPlaying) particle.Stop();
     }
 
     void FixedUpdate()
@@ -40,25 +43,31 @@ public class PlayerMovement : MonoBehaviour
             // Set the new Y position while preserving the object's X and Z coordinates.
             rb.MovePosition(new Vector3(transform.position.x, newYPosition, transform.position.z));
         }
+
         // Moving Forward
         if (Input.GetKey(KeyCode.Space))
         {
             Vector3 forwardMovement = speed * Time.fixedDeltaTime * - transform.up;
             rb.MovePosition(rb.position + forwardMovement);
+            if (particle.isStopped) particle.Play();
         }
-
         // Moving Up
-        if (Input.GetKey(KeyCode.LeftShift) && reachMaxWaterLevel)
+        else if (Input.GetKey(KeyCode.LeftShift) && reachMaxWaterLevel)
         {
             Vector3 upMovement = Time.fixedDeltaTime * upDownSpeed * Vector3.up;
             rb.MovePosition(rb.position + upMovement);
+            if (particle.isStopped) particle.Play();
         }
-
         // Moving Down
-        if (Input.GetKey(KeyCode.LeftControl))
+        else if (Input.GetKey(KeyCode.LeftControl))
         {
             Vector3 downMovement = Time.fixedDeltaTime * upDownSpeed * Vector3.down;
             rb.MovePosition(rb.position + downMovement);
+            if (particle.isStopped) particle.Play();
+        }
+        else
+        {
+            if (particle.isPlaying) particle.Stop();
         }
 
         Quaternion newRotation = Quaternion.identity;
