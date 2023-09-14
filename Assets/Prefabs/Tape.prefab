@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7134553985902428808}
   - component: {fileID: 1774883117056858526}
   - component: {fileID: 8485718712519639943}
-  - component: {fileID: 7215099445746859371}
   - component: {fileID: 1672147759465729401}
   - component: {fileID: 415212406771716876}
   - component: {fileID: 5005120432531400967}
@@ -172,18 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currDialogue:
   - I need something to play this tape
---- !u!114 &7215099445746859371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8110630501514917467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc57f1c608500ab47b7aa09a54cdefbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1672147759465729401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +226,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 100
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -328,6 +315,7 @@ GameObject:
   - component: {fileID: 7599279439208565118}
   - component: {fileID: 3667550730068588585}
   - component: {fileID: 9079427558221161829}
+  - component: {fileID: 2914049337107729276}
   m_Layer: 3
   m_Name: HoverText
   m_TagString: Untagged
@@ -488,3 +476,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3667550730068588585}
   m_maskType: 0
+--- !u!114 &2914049337107729276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930376138500462181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc57f1c608500ab47b7aa09a54cdefbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

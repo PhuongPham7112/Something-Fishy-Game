@@ -58,16 +58,12 @@ public class Highlight : MonoBehaviour
                     // decide whether to take action or collect item
                     if (item != null && InventoryManager.instance.AddItem(item, pickupAudio))
                     {
+                        if (!pickupAudio.isPlaying) pickupAudio.Play();
                         poolable.ReturnToPool();
                     } 
                     else if (actionFunction != null) // call the action on object otherwise
                     {
-                        Debug.Log("Cannot store item, try action instead");
                         CallAction(true); // click on object
-                    }
-                    else
-                    {
-                        Debug.Log("There's no action to this");
                     }
                 }
             }
