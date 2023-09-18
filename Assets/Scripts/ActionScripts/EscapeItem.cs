@@ -15,8 +15,9 @@ public class EscapeItem : InteractableFunctionality
                 interactAudio.Play();
             }
             isEscapable = true;
+            GameState.isEscape = isEscapable;
             Time.timeScale = 0f; // stop everything
-            SceneManager.LoadScene("EndingScene");
+            SceneStateManager.Instance.PlayEndScene();
         }
     }
 }

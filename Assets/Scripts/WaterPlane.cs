@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class WaterPlane : MonoBehaviour
 {
@@ -15,7 +17,10 @@ public class WaterPlane : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+        maxYPosition = initialPosition.y + 10f;
+        targetYPosition = initialPosition.y - 30f;
         startTime = Time.time;
+        Debug.Log(initialPosition.y + " " + maxYPosition + " " + targetYPosition);
         StartCoroutine(LowerYPosition());
     }
 
@@ -30,6 +35,11 @@ public class WaterPlane : MonoBehaviour
             transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
 
             yield return null;
+        }
+        Debug.Log("Finish draining" + transform.position.y + " " + targetYPosition);
+        if (!GameState.isEscape)
+        {
+            SceneStateManager.Instance.PlayEndScene();
         }
     }
 
