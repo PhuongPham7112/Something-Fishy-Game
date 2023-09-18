@@ -518,7 +518,7 @@ MonoBehaviour:
   lockWord: 
   secondActionFunction: {fileID: 0}
   hoverText: {fileID: 3473248087886438721}
-  pickupAudio: {fileID: 3628487380886583874}
+  pickupAudio: {fileID: 8300000, guid: 9ea272b32e2f51b48a59d10ae3ecdf38, type: 3}
 --- !u!114 &3921221499524204508
 MonoBehaviour:
   m_ObjectHideFlags: 0

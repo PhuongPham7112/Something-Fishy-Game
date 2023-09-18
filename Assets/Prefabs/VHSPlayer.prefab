@@ -418,6 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactAudio: {fileID: 7110502939575406943}
   destroyOnUnlock: 0
+  dialogueTime: 2.5
   unlockCue:
   - '[Crane] Dr. Thorn. There''s something I want to say...'
   - '[Crane] I don''t know what''s going on between you and Evelyn Westwood'

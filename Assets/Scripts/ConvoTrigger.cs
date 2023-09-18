@@ -13,9 +13,9 @@ public class ConvoTrigger : MonoBehaviour
         dialogueBox = DialogueBox.Instance;
     }
 
-    public void PlayDialogue()
+    public void PlayDialogue(float time = 1.5f)
     {
         dialogueBox.SetText(currDialogue);
-        dialogueBox.StartDialogue();
+        dialogueBox.StartDialogue(time);
     }
 }

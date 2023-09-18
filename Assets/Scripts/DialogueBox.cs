@@ -7,6 +7,7 @@ public class DialogueBox : MonoBehaviour
 {
     public static DialogueBox Instance { get; private set; }
     public List<string> currDialogue;
+    private float timePerLine = 1.5f;
     private int index = 0;
     TextMeshProUGUI textMeshPro;
 
@@ -33,8 +34,9 @@ public class DialogueBox : MonoBehaviour
         currDialogue = new List<string>(dialogue);
     }
 
-    public void StartDialogue()
+    public void StartDialogue(float time = 1.5f)
     {
+        timePerLine = time;
         index = 0;
         StartCoroutine(RunDialogue());
     }
@@ -45,7 +47,7 @@ public class DialogueBox : MonoBehaviour
         {
             textMeshPro.text = currDialogue[index];
             index++;
-            yield return new WaitForSecondsRealtime(1.5f);
+            yield return new WaitForSecondsRealtime(timePerLine);
         }
 
         // Clear the text after the dialogue finishes

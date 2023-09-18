@@ -12,7 +12,7 @@ public class Highlight : MonoBehaviour
     [SerializeField] public string lockWord = null;
     [SerializeField] public InteractableFunctionality secondActionFunction = null;
     [SerializeField] public TextMeshPro hoverText;
-    [SerializeField] public AudioSource pickupAudio = null;
+    [SerializeField] public AudioClip pickupAudio = null;
 
     private GameObject player;
     private float maxDist = 10.0f;
@@ -49,16 +49,19 @@ public class Highlight : MonoBehaviour
             {
                 if (hit.transform.gameObject == gameObject) // if this is clicked
                 {
-                    Debug.Log("Clicked " + hit.transform.name);
+                    // Play trigger audio
+                    if (pickupAudio != null)
+                    {
+                        AudioManager.instance.PlayAudioOnce(pickupAudio);
+                    }
                     // If there's dialogue cue, play it
                     if (convo != null)
                     {
                         convo.PlayDialogue();
                     }
                     // decide whether to take action or collect item
-                    if (item != null && InventoryManager.instance.AddItem(item, pickupAudio))
+                    if (item != null && InventoryManager.instance.AddItem(item))
                     {
-                        if (!pickupAudio.isPlaying) pickupAudio.Play();
                         poolable.ReturnToPool();
                     } 
                     else if (actionFunction != null) // call the action on object otherwise

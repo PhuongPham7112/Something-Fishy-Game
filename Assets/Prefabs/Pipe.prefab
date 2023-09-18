@@ -693,6 +693,7 @@ MonoBehaviour:
   lockWord: valve
   secondActionFunction: {fileID: 1830780355070807096}
   hoverText: {fileID: 6853106745060434442}
+  pickupAudio: {fileID: 0}
 --- !u!114 &4838651494484248537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,8 +708,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactAudio: {fileID: 1994194111548492135}
   destroyOnUnlock: 0
+  dialogueTime: 1.5
   unlockCue:
   - Phew, the water should be going back up now
+  - I should be able to buy some time...
 --- !u!114 &1830780355070807096
 MonoBehaviour:
   m_ObjectHideFlags: 0

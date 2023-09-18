@@ -8,6 +8,6 @@ public class DispendItem : InteractableFunctionality
 
     public override void Action(bool isClicked, string key = "")
     {
-        InventoryManager.instance.AddItem(droppingItem, interactAudio);
+        InventoryManager.instance.AddItem(droppingItem);
     }
 }

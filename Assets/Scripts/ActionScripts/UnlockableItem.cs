@@ -5,6 +5,7 @@ using UnityEngine;
 public class UnlockableItem : InteractableFunctionality
 {
     [SerializeField] private bool destroyOnUnlock = false;
+    [SerializeField] private float dialogueTime = 1.5f;
     private string requiredKey;
     private InteractableFunctionality secondaryAction = null;
     private bool unlocked = false;
@@ -33,7 +34,7 @@ public class UnlockableItem : InteractableFunctionality
             {
                 Debug.Log("Playing cue");
                 convo.currDialogue = new List<string>(unlockCue);
-                convo.PlayDialogue();
+                convo.PlayDialogue(dialogueTime);
             }
             if (interactAudio != null)
             {
