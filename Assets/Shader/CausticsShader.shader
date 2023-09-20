@@ -7,6 +7,8 @@ Shader "Unlit/CausticsShader"
         _CausticsTexture ("Custom Caustics Texture", 2D) = ""{}
         _Caustics_ST("Caustics ST", Vector) = (1,1,0,0)
         _CausticsSpeed ("Caustics speed", Float) = 0.5
+            _CausticsFadeRadius ("Caustics Fade Radius", Float) = 1
+            _CausticsFadeStrength("Fade Strength", Float) = 0.5
         _Color("Color (RGBA)", Color) = (0, 0, 1, 0.1) // add _Color property
     }
 
@@ -16,8 +18,10 @@ Shader "Unlit/CausticsShader"
         // SubShader Tags define when and under which conditions a SubShader block or
         // a pass is executed.
         Tags {"RenderType" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
+        Cull Front
         ZWrite Off
-        Blend SrcAlpha OneMinusSrcAlpha
+        ZTest Always
+        Blend One OneMinusSrcAlpha
         Pass
         {
             // The HLSL code block. Unity SRP uses the HLSL language.
@@ -56,6 +60,8 @@ Shader "Unlit/CausticsShader"
             float4 _Color;
             float4 _Caustics_ST;
             float _CausticsSpeed;
+            float _CausticsFadeRadius;
+            float _CausticsFadeStrength;
             TEXTURE2D(_CausticsTexture);
             SAMPLER(sampler_CausticsTexture);
 
@@ -74,9 +80,22 @@ Shader "Unlit/CausticsShader"
                 return OUT;
             }
 
-            half2 Panner(half2 uv, half speed, half tiling)
+            half2 Panner(half2 uv, half speed, half scale)
             {
-                return (half2(1, 0) * _Time.y * speed) + uv;
+                return (half2(1, 0) * _Time.y * speed) + uv * scale;
+            }
+
+            half4 SampleCaustics(half2 uv, half split)
+            {
+                half2 uv1 = uv + half2(split, split);
+                half2 uv2 = uv + half2(split, -split);
+                half2 uv3 = uv + half2(-split, -split);
+
+                half r = SAMPLE_TEXTURE2D(_CausticsTexture, sampler_CausticsTexture, uv1).r;
+                half g = SAMPLE_TEXTURE2D(_CausticsTexture, sampler_CausticsTexture, uv2).r;
+                half b = SAMPLE_TEXTURE2D(_CausticsTexture, sampler_CausticsTexture, uv3).r;
+
+                return half4(r, g, b, 1);
             }
 
             // The fragment shader definition.
@@ -98,17 +117,18 @@ Shader "Unlit/CausticsShader"
                 // box
                 float boundingBoxMask = all(step(objectSpacePos, 0.5) * (1 - step(objectSpacePos, -0.5)));
                 // TODO: Defining the color variable and returning it.
-                half4 color = half4(0, 0, 0, 0);
+                half4 color = half4(_Color);
                 // calculate caustics texture UV coordinates (influenced by light direction)
-                half2 uvCaustics = worldPos.xz * _Caustics_ST.xy + _Caustics_ST.zw;
-                half2 moving_uv = Panner(uvCaustics, _CausticsSpeed, _Caustics_ST.zw);
-                half4 caustics = SAMPLE_TEXTURE2D(_CausticsTexture, sampler_CausticsTexture, moving_uv);
-                caustics.a = 0.3;
-                // final color
-                half4 finalColor = (color + caustics);
-                finalColor.a = 0.25;
-                // create bounding box mask
-                return  caustics * boundingBoxMask; //*boundingBoxMask;
+                half2 uvCaustics = worldPos.xz * _Caustics_ST.xy;
+                // moving
+                half2 moving_uv1 = Panner(uvCaustics, -0.5 * _CausticsSpeed, 0.5);
+                half4 caustics1 = SampleCaustics(moving_uv1, 0.001);
+                half2 moving_uv2 = Panner(uvCaustics, 0.15 * _CausticsSpeed, 0.25);
+                half4 caustics2 = SampleCaustics(moving_uv2, 0.001);
+                half4 caustics = min(caustics1, caustics2) * 0.65;
+                // Edge fade mask
+                half edgeFadeMask = 1 - saturate((distance(objectSpacePos, 0) - _CausticsFadeRadius) / (1 - _CausticsFadeStrength));
+                return  (caustics + color) * boundingBoxMask * edgeFadeMask; //*boundingBoxMask;
             }
             ENDHLSL
         }
