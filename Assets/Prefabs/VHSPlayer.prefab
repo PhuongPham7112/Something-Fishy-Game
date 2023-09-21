@@ -420,8 +420,8 @@ MonoBehaviour:
   destroyOnUnlock: 0
   dialogueTime: 2.5
   unlockCue:
-  - '[Crane] Dr. Thorn. There''s something I want to say...'
-  - '[Crane] I don''t know what''s going on between you and Evelyn Westwood'
+  - '[Crane] Victor. There''s something I want to say...'
+  - '[Crane] I don''t know what''s going on between you and Evelyn'
   - '[Crane] It''s usually not my place to interfere in person business'
   - '[Crane] But whatever has happened, at least make sure to give her a little birthday
     note'

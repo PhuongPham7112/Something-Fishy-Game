@@ -17,10 +17,15 @@ public class InspectableItem : MonoBehaviour
     public float horizontalSpeed = 5f;
     public float minZoom = 0.5f;
     public float maxZoom = 2.0f;
-    public Vector3 zoomSpeed = new Vector3(0.1f, 0.1f, 0.1f);
+    public float zoomSpeed = 1f;
+    public Vector3 zoom;
 
     private void Awake()
     {
+        minZoom = transform.localScale.x;
+        maxZoom = minZoom * 3;
+        float perZoom = minZoom / 10;
+        zoom = new Vector3(perZoom * zoomSpeed, perZoom * zoomSpeed, perZoom * zoomSpeed);
         enabled = false;
     }
 
@@ -33,7 +38,7 @@ public class InspectableItem : MonoBehaviour
             float sign = Mathf.Sign(scrollInput);
             
             transform.localScale = ((transform.localScale.x < maxZoom && sign > 0.0f) || (transform.localScale.x > minZoom && sign < 0.0f )) 
-                ? transform.localScale + Mathf.Sign(scrollInput) * zoomSpeed
+                ? transform.localScale + Mathf.Sign(scrollInput) * zoom
                 : transform.localScale;
         }
 

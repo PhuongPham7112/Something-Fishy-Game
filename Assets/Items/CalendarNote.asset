@@ -16,8 +16,8 @@ MonoBehaviour:
   actionType: 1
   range: {x: 5, y: 4}
   stackable: 0
-  readableContent: Meeting with Crane on Monday and with Westwood on Wednesday. Discuss
-    the notes with Thorn on Thursday. Deliver tape voice to Thorn.
+  readableContent: Meeting with Crane on Monday(18) and with Westwood on Wednesday(20).
+    Discuss the notes with Thorn on Thursday. Deliver tape voice to Thorn.
   imageSprite: {fileID: 21300000, guid: 2375d42b52f2e7f47ad5c5e465c8ce4f, type: 3}
   itemModelTag: CalendarNote
   itemUnlockKey: 

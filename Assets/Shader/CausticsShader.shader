@@ -125,7 +125,7 @@ Shader "Unlit/CausticsShader"
                 half4 caustics1 = SampleCaustics(moving_uv1, 0.001);
                 half2 moving_uv2 = Panner(uvCaustics, 0.15 * _CausticsSpeed, 0.25);
                 half4 caustics2 = SampleCaustics(moving_uv2, 0.001);
-                half4 caustics = min(caustics1, caustics2) * 0.65;
+                half4 caustics = min(caustics1, caustics2) * 0.75;
                 // Edge fade mask
                 half edgeFadeMask = 1 - saturate((distance(objectSpacePos, 0) - _CausticsFadeRadius) / (1 - _CausticsFadeStrength));
                 return  (caustics + color) * boundingBoxMask * edgeFadeMask; //*boundingBoxMask;

@@ -563,7 +563,8 @@ MonoBehaviour:
   horizontalSpeed: 5
   minZoom: 0.5
   maxZoom: 2
-  zoomSpeed: {x: 0, y: 0, z: 0}
+  zoomSpeed: 0
+  zoom: {x: 0, y: 0, z: 0}
 --- !u!82 &5148186090035261680
 AudioSource:
   m_ObjectHideFlags: 0

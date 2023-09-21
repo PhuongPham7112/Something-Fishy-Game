@@ -8,7 +8,7 @@ public class WaterPlane : MonoBehaviour
 {
     public float maxYPosition = -10.0f;
     public float targetYPosition = -27.5f; // The target Y position.
-    public float duration = 60f; // The duration in seconds (10 minutes).
+    public float duration = 300f; // The duration in seconds (10 minutes).
 
     private Vector3 initialPosition; // The initial position of the GameObject.
     private float startTime; // The start time of the lowering process.
@@ -20,7 +20,6 @@ public class WaterPlane : MonoBehaviour
         maxYPosition = initialPosition.y + 10f;
         targetYPosition = initialPosition.y - 30f;
         startTime = Time.time;
-        Debug.Log(initialPosition.y + " " + maxYPosition + " " + targetYPosition);
         StartCoroutine(LowerYPosition());
     }
 
