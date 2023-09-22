@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class WaterPlane : MonoBehaviour
 {
+    public PlayerMovement playerMovement;
     public float maxYPosition = -10.0f;
     public float targetYPosition = -27.5f; // The target Y position.
     public float duration = 300f; // The duration in seconds (10 minutes).
+    public float increaseDuration = 60f;
 
     private Vector3 initialPosition; // The initial position of the GameObject.
     private float startTime; // The start time of the lowering process.
@@ -25,6 +27,7 @@ public class WaterPlane : MonoBehaviour
 
     private IEnumerator LowerYPosition()
     {
+        SetDrainStatus(true);
         while (transform.position.y > targetYPosition && isDraining)
         {
             float elapsedTime = Time.time - startTime;
@@ -44,10 +47,8 @@ public class WaterPlane : MonoBehaviour
 
     private IEnumerator IncreaseYPosition()
     {
-        float increaseDuration = duration / 3f;
         while (transform.position.y < maxYPosition)
         {
-            Debug.Log("Increasing");
             float elapsedTime = Time.time - startTime;
             float newYPosition = Mathf.Lerp(initialPosition.y, maxYPosition, elapsedTime / increaseDuration);
 
@@ -56,17 +57,23 @@ public class WaterPlane : MonoBehaviour
 
             yield return null;
         }
+
         StartCoroutine(LowerYPosition()); // Draining again
     }
 
     public void RestoreWaterLevel()
     {
-        Debug.Log("Restore water level");
         StopCoroutine(LowerYPosition());
-        isDraining = false;
+        SetDrainStatus(false);
         initialPosition = transform.position;
         startTime = Time.time;
         
         StartCoroutine(IncreaseYPosition());
+    }
+
+    private void SetDrainStatus(bool status)
+    {
+        isDraining = status;
+        playerMovement.isWaterDraining = status;
     }
 }

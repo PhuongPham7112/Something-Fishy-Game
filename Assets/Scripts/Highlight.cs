@@ -15,7 +15,7 @@ public class Highlight : MonoBehaviour
     [SerializeField] public AudioClip pickupAudio = null;
 
     private GameObject player;
-    private float maxDist = 10.0f;
+    private float maxDist = 15.0f;
     private Poolable poolable;
     private ConvoTrigger convo;
 
@@ -76,7 +76,7 @@ public class Highlight : MonoBehaviour
     void OnMouseEnter()
     {
         // highlight on mouse hover
-        if (!InventoryManager.instance.isLocked && Vector3.Distance(transform.position, player.transform.position) < maxDist)
+        if (!InventoryManager.instance.isLocked && Vector3.Distance(transform.position, Camera.main.transform.position) < maxDist)
         {
             hoverText.enabled = true;
         }
@@ -91,7 +91,6 @@ public class Highlight : MonoBehaviour
     {
         if (actionFunction != null)
         {
-            Debug.Log("Successfully call action");
             actionFunction.Action(isClicked, key);
         }
     }

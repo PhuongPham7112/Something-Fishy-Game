@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     ParticleSystem particle;
 
+    public bool isWaterDraining = true;
     private Rigidbody rb;
     private float timeCount = 0.0f;
     // Define the maximum and minimum rotation angles
@@ -43,8 +44,11 @@ public class PlayerMovement : MonoBehaviour
                 // Calculate the new Y position after descending.
                 float newYPosition = waterPlane.position.y;
 
-                // Set the new Y position while preserving the object's X and Z coordinates.
-                rb.MovePosition(new Vector3(transform.position.x, newYPosition, transform.position.z));
+                if (isWaterDraining)
+                {
+                    // Set the new Y position while preserving the object's X and Z coordinates.
+                    rb.MovePosition(new Vector3(transform.position.x, newYPosition, transform.position.z));
+                }
             }
 
             // Moving Forward
