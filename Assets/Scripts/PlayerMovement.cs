@@ -78,7 +78,8 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = rb.velocity.normalized * maxVelocity;
                 }
                 if (particle.isStopped) particle.Play();
-            }
+            } 
+
             // Rotating Left
             if (Input.GetKey(KeyCode.A))
             {
@@ -152,13 +153,10 @@ public class PlayerMovement : MonoBehaviour
             if (!isMoving)
             {
                 if (particle.isPlaying) particle.Stop();
-                if (timeCount > 1.5f)
-                {
-                    // Ensure that the Rigidbody is completely stopped
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                    timeCount = 0.0f;
-                }
+                // Ensure that the Rigidbody is completely stopped
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                timeCount = 0.0f;
             }
             timeCount += Time.deltaTime;
         }
