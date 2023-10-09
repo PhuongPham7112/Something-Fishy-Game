@@ -39,8 +39,9 @@ public class WaterPlane : MonoBehaviour
             yield return null;
         }
         Debug.Log("Finish draining" + transform.position.y + " " + targetYPosition);
-        if (!GameState.isEscape)
+        if (!GameState.isEscape && !GameState.isValveTurned)
         {
+            Debug.Log("Escape game, water drained");
             SceneStateManager.Instance.PlayEndScene();
         }
     }
@@ -57,8 +58,9 @@ public class WaterPlane : MonoBehaviour
 
             yield return null;
         }
-
-        StartCoroutine(LowerYPosition()); // Draining again
+        GameState.isValveTurned = false; // done refilling from valve turn
+        Debug.Log("Done refilling");
+        DrainWaterLevel(); // Draining again
     }
 
     public void RestoreWaterLevel()
@@ -69,6 +71,16 @@ public class WaterPlane : MonoBehaviour
         startTime = Time.time;
         
         StartCoroutine(IncreaseYPosition());
+    }
+
+    void DrainWaterLevel()
+    {
+        StopCoroutine(IncreaseYPosition());
+        SetDrainStatus(true);
+        initialPosition = transform.position;
+        startTime = Time.time;
+
+        StartCoroutine(LowerYPosition());
     }
 
     private void SetDrainStatus(bool status)

@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Valve
+  m_text: Pick up (E)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -377,7 +377,8 @@ MonoBehaviour:
   horizontalSpeed: 5
   minZoom: 500
   maxZoom: 1500
-  zoomSpeed: {x: 100, y: 100, z: 100}
+  zoomSpeed: 1
+  zoom: {x: 0, y: 0, z: 0}
 --- !u!114 &6874573295954801215
 MonoBehaviour:
   m_ObjectHideFlags: 0

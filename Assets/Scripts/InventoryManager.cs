@@ -69,6 +69,20 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public bool IsEmpty()
+    {
+        // find an empty slot
+        foreach (InventorySlot slot in slots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     void ChangeSelectedSlot(int newSlot)
     {
         if (selectedSlot > -1)

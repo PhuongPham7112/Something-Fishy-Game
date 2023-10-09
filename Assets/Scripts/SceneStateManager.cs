@@ -35,20 +35,5 @@ public class SceneStateManager : MonoBehaviour
         GameState.isPlaying = false;
         SceneManager.LoadScene("EndingScene");
     }
-
-    private void Update()
-    {
-        // Check if the Escape key is pressed
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // Quit the application (works in standalone builds)
-            Application.Quit();
-
-            // If you're in the Unity Editor, you might want to stop play mode
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #endif
-        }
-    }
 }
  

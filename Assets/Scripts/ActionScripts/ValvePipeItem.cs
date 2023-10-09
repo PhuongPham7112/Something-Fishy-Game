@@ -9,6 +9,7 @@ public class ValvePipeItem : InteractableFunctionality
     // Increase the water level again
     public override void Action(bool isClicked, string key = "")
     {
+        GameState.isValveTurned = true;
         waterPlane.RestoreWaterLevel();
         if (interactAudio != null)
         {

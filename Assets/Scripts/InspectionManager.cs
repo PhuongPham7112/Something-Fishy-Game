@@ -25,10 +25,14 @@ public class InspectionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            inViewMode = !inViewMode;
+            inViewMode = true;
+        } 
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            inViewMode = false;
         }
 
-        if (inViewMode)
+        if (inViewMode && !InventoryManager.instance.IsEmpty())
         {
             Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
             Vector3 worldPoint = inspectCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, inspectCam.nearClipPlane));
