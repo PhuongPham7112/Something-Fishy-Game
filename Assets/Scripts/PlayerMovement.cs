@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isWaterDraining = true;
     private Rigidbody rb;
+    private BoxCollider collider;
     private float timeCount = 0.0f;
     // Define the maximum and minimum rotation angles
     float maxRotationAngle = -60f;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        collider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
         if (particle.isPlaying) particle.Stop();
     }
@@ -51,6 +53,20 @@ public class PlayerMovement : MonoBehaviour
                     // Set the new Y position while preserving the object's X and Z coordinates.
                     rb.MovePosition(new Vector3(transform.position.x, newYPosition, transform.position.z));
                 }
+            }
+
+            // if the water level is stranding the player
+            float playerHeight = collider.size.y;
+            RaycastHit hit;
+            Vector3 rayOrigin = transform.position;
+            rayOrigin.y -= playerHeight / 2f;
+            if (Physics.Raycast(rayOrigin, Vector3.down, out hit))
+            {
+                if (hit.distance + yDifference < playerHeight)
+                {
+                    Debug.Log("Stranded");
+                    SceneStateManager.Instance.PlayEndScene();
+                } 
             }
 
             float velocityMag = rb.velocity.magnitude;

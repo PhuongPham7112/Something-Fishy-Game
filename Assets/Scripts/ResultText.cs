@@ -13,17 +13,11 @@ public class ResultText : MonoBehaviour
 
         if (!GameState.isEscape)
         {
-            textMeshPro.text = "You didn't escape";
+            textMeshPro.text = "Stranded before a way out";
         }
         else
         {
             textMeshPro.text = "You've escaped";
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
