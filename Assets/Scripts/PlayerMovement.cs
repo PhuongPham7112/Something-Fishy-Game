@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hit.distance + yDifference < playerHeight)
                 {
-                    Debug.Log("Stranded");
                     SceneStateManager.Instance.PlayEndScene();
                 } 
             }
@@ -87,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             else if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.LeftShift))
             {
                 isMoving = true;
-                Vector3 forwardMovement = 4f * speed  * -transform.up;
+                Vector3 forwardMovement = 8f * speed  * -transform.up;
                 rb.AddForce(forwardMovement, ForceMode.VelocityChange);
                 if (velocityMag > maxVelocity)
                 {
