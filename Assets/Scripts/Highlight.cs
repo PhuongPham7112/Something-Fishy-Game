@@ -76,7 +76,7 @@ public class Highlight : MonoBehaviour
     void OnMouseEnter()
     {
         // highlight on mouse hover
-        if (!InventoryManager.instance.isLocked && Vector3.Distance(transform.position, Camera.main.transform.position) < maxDist)
+        if (!InventoryManager.instance.isLocked && Vector3.Distance(transform.position, player.transform.position) < maxDist)
         {
             hoverText.enabled = true;
         }

@@ -17,18 +17,18 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isWaterDraining = true;
     private Rigidbody rb;
-    private BoxCollider collider;
+    private BoxCollider boxCollider;
     private float timeCount = 0.0f;
     // Define the maximum and minimum rotation angles
-    float maxRotationAngle = -60f;
-    float minRotationAngle = -120f;
+    float maxRotationAngle = -30f;
+    float minRotationAngle = 30f;
     float maxVelocity = 10f;
     float startDescendingTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<BoxCollider>();
+        boxCollider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
         if (particle.isPlaying) particle.Stop();
     }
@@ -37,9 +37,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameState.isPlaying)
         {
-            
             float yDifference = waterPlane.position.y - transform.position.y;
-            bool reachMaxWaterLevel = yDifference > 0f;
+            bool belowMaxWaterLevel = yDifference > 0f;
             bool isMoving = false;
 
             // Check if the current Y position is higher than the maximum allowed.
@@ -56,13 +55,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // if the water level is stranding the player
-            float playerHeight = collider.size.y;
+            float playerHeight = boxCollider.size.y;
             RaycastHit hit;
-            Vector3 rayOrigin = transform.position;
-            rayOrigin.y -= playerHeight / 2f;
-            if (Physics.Raycast(rayOrigin, Vector3.down, out hit))
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
             {
-                if (hit.distance + yDifference < playerHeight)
+                if (Mathf.Abs(hit.distance) + Mathf.Abs(yDifference) < playerHeight)
                 {
                     SceneStateManager.Instance.PlayEndScene();
                 } 
@@ -74,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.LeftShift))
             {
                 isMoving = true;
-                Vector3 forwardMovement = speed  * -transform.up;
+                Vector3 forwardMovement = speed  * transform.forward;
                 rb.AddForce(forwardMovement, ForceMode.VelocityChange);
                 if (velocityMag > maxVelocity)
                 {
@@ -86,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
             else if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.LeftShift))
             {
                 isMoving = true;
-                Vector3 forwardMovement = 8f * speed  * -transform.up;
+                Vector3 forwardMovement = 8f * speed  * transform.forward;
                 rb.AddForce(forwardMovement, ForceMode.VelocityChange);
                 if (velocityMag > maxVelocity)
                 {
@@ -99,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 isMoving = true;
-                newRotation = Quaternion.AngleAxis(-turnSpeed * Time.fixedDeltaTime, Vector3.forward);
+                newRotation = Quaternion.AngleAxis(-turnSpeed * Time.fixedDeltaTime, Vector3.up);
                 // Apply the angular velocity to the Rigidbody
                 rb.MoveRotation(rb.rotation * newRotation);
             }
@@ -107,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
             else if (Input.GetKey(KeyCode.D))
             {
                 isMoving = true;
-                newRotation = Quaternion.AngleAxis(turnSpeed * Time.fixedDeltaTime, Vector3.forward);
+                newRotation = Quaternion.AngleAxis(turnSpeed * Time.fixedDeltaTime, Vector3.up);
                 // Apply the angular velocity to the Rigidbody
                 rb.MoveRotation(rb.rotation * newRotation);
             }
@@ -119,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
                 Quaternion rotatedRotation = rb.rotation * newRotation;
 
                 // Clamp the rotation angle between the minimum and maximum values
-                float rotationX = Mathf.Clamp(rotatedRotation.eulerAngles.x, minRotationAngle, maxRotationAngle);
+                float rotationX = minRotationAngle;
                 rotatedRotation.eulerAngles = new Vector3(rotationX, rotatedRotation.eulerAngles.y, rotatedRotation.eulerAngles.z);
 
                 // Apply the angular velocity to the Rigidbody
@@ -135,14 +132,14 @@ public class PlayerMovement : MonoBehaviour
                 if (particle.isStopped) particle.Play();
             }
             // Turning up
-            else if (Input.GetKey(KeyCode.W) && reachMaxWaterLevel)
+            else if (Input.GetKey(KeyCode.W) && belowMaxWaterLevel)
             {
                 isMoving = true;
                 newRotation = Quaternion.AngleAxis(-turnSpeed * Time.fixedDeltaTime, Vector3.right);
                 Quaternion rotatedRotation = rb.rotation * newRotation;
 
                 // Clamp the rotation angle between the minimum and maximum values
-                float rotationX = Mathf.Clamp(rotatedRotation.eulerAngles.x, minRotationAngle, maxRotationAngle);
+                float rotationX = maxRotationAngle;
                 rotatedRotation.eulerAngles = new Vector3(rotationX, rotatedRotation.eulerAngles.y, rotatedRotation.eulerAngles.z);
 
                 // Apply the angular velocity to the Rigidbody
@@ -161,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 // Reset tilting
-                Quaternion defaultRotation = Quaternion.Euler(-90f, transform.localEulerAngles.y, transform.localEulerAngles.z);
+                Quaternion defaultRotation = Quaternion.Euler(0f, transform.localEulerAngles.y, 0f);
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, defaultRotation, 20.0f * Time.deltaTime));
             }
             

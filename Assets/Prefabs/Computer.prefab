@@ -247,32 +247,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactAudio: {fileID: 5074720687960686523}
   destroyOnUnlock: 0
-  dialogueTime: 3.5
+  dialogueTime: 8
   unlockCue:
   - '[Westwood] My Dearest Dr. Thorn, '
-  - '[Westwood] I hope this letter finds you well, although I doubt it will change
-    anything. There are things I must confess, burdens I can no longer bear in silence.
-    As I write these words, I am consumed by guilt and remorse, but it is time for
-    the truth to be revealed.'
-  - '[Westwood] For years, we toiled side by side, our research a testament to our
-    shared passion for the mysteries of the deep. But in the shadows, I watched as
-    you basked in the glory of our accomplishments, claiming sole credit for discoveries
-    that were ours'
-  - '[Westwood] The world saw you as the brilliant mind behind our work, while I
-    was relegated to a mere footnote in our shared history. My pride, my ambition,
-    and my wounded ego drove me to commit a terrible act'
-  - '[Westwood] I entered your laboratory, my heart pounding with fear and determination.
-    I knew what I had to do to ensure that our research would finally be recognized
-    as the joint effort it truly was. With trembling hands, I approached you, and
-    in a moment of madness, I ended your life.'
-  - '[Westwood] The murder evidence, the bloody glove I used to silence you forever,
-    is hidden in your lamp. I thought it would be the perfect hiding place, as no
-    one would suspect such an inconspicuous location.'
-  - '[Westwood] I cannot express the depths of my remorse for the pain I have caused,
-    not only to you but to your family, friends, and colleagues who loved and respected
-    you. My actions were driven by envy and despair, and I am prepared to face the
-    consequences of my heinous crime.'
-  - '[Westwood] Yours in sorrow, Dr. Evelyn Westwood'
+  - I hope this letter finds you well, although I doubt it will change anything.
+    There are things I must confess, burdens I can no longer bear in silence.
+  - For years, we toiled side by side. But in the shadows, I watched as you basked
+    in the glory of our accomplishments.
+  - The world saw you as the brilliant mind behind our work, while I was relegated
+    to a mere footnote in our shared history.
+  - I entered your laboratory... With trembling hands, I approached you, and in a
+    moment of madness, I ended your life.
+  - The murder evidence, the bloody glove I used to silence you forever, is hidden
+    in your lamp. I thought it would be the perfect hiding place
+  - My actions were driven by envy and despair, and I am prepared to face the consequences
+    of my heinous crime.
+  - Yours in sorrow, Dr. Evelyn Westwood
 --- !u!54 &2746723035385088212
 Rigidbody:
   m_ObjectHideFlags: 0
