@@ -35,5 +35,15 @@ public class SceneStateManager : MonoBehaviour
         GameState.isPlaying = false;
         SceneManager.LoadScene("EndingScene");
     }
+
+    public void QuitGame()
+    {
+        // Add code here to quit your game
+        Application.Quit();
+        // If you're in the Unity Editor, you might want to stop play mode
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }
  
