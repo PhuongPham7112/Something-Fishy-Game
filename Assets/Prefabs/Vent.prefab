@@ -68,6 +68,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b3a1b4fe0b2b324418a586ff9ac7a8ec, type: 2}
+  - {fileID: 2100000, guid: 69d9ea2f8cbf20840b7e19648e3eeb22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactAudio: {fileID: 0}
   destroyOnUnlock: 0
+  dialogueTime: 1.5
   unlockCue: []
 --- !u!114 &1886382182548442796
 MonoBehaviour:

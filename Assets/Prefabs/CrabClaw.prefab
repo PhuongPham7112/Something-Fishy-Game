@@ -69,6 +69,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 7691037831545285905, guid: ba259bfa6c7ff4e44b95b2fd1de80736, type: 3}
+  - {fileID: 2100000, guid: 69d9ea2f8cbf20840b7e19648e3eeb22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -192,7 +193,8 @@ MonoBehaviour:
   horizontalSpeed: 5
   minZoom: 0.5
   maxZoom: 2
-  zoomSpeed: {x: 0.1, y: 0.1, z: 0.1}
+  zoomSpeed: 1
+  zoom: {x: 0, y: 0, z: 0}
 --- !u!82 &5001329215204498130
 AudioSource:
   m_ObjectHideFlags: 0
